@@ -33,8 +33,4 @@
 
 cmake-build-debug
 CMakeLists.txt
-/.idea/.gitignore
-/.idea/misc.xml
-/.idea/ModelCpp.iml
-/.idea/modules.xml
-/.idea/vcs.xml
+.idea
