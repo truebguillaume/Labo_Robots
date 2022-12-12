@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Demo           : ModelCpp
-// Fichier        : ModelCpp.cpp
-// Auteur(s)      : Trüeb Guillaume
+// Demo           : Labo_Robots_Groupe_07_H
+// Fichier        : Labo_Robots_Groupe_07_H.cpp
+// Auteur(s)      : Gianni Bee & Trüeb Guillaume
 // But            : Modèle pour démarrer un projet en C++
 // Modifications  :
 // Remarque(s)    : -
