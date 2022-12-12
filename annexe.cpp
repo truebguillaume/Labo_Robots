@@ -12,20 +12,22 @@
 
 #include <iostream>
 #include "annexe.h"
+#include <iomanip>
 #include <random>
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
 using namespace std;
 
-int saisieEntier(const string& MSG, int min, int max, const string& MSG_ERREUR) {
+int saisieEntier(const string& MSG, int min, int max, const string& MSG_ERREUR,
+                 int pos) {
 
     int  saisie;                 // Variable de stockage de la saisie
     bool erreur;                 // Variable de stockage de l'état de la saisie
 
     do {
         // Affichage message de demande de saisie
-        cout << MSG;
+        cout << MSG << setw(pos) <<  "[" << min << ".." << max << "] :";
 
         // Vérifie si le flux est cassé ou si la valeur est en dehors des valeurs minimum et maximum
         erreur = not(cin >> saisie) or saisie < min or saisie > max;

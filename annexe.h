@@ -14,10 +14,12 @@
 // @param min               : correspond à la borne minimale acceptable pour la saisie
 // @param max               : correspond à la borne maximale acceptable pour la saisie
 // @param MSG_ERREUR        : correspond au message à afficher si une erreur survient
+// @param pos               : correspond à l'espace entre le msg et le borne
 // ---------------------------------------------------------------------------------------------------------------------
 // @retour                  : une valeur de type int comprenant la saisie de l'utilisateur
 // @exceptions              : -
-int  saisieEntier(const std::string& MSG, int min, int max, const std::string& MSG_ERREUR);
+int  saisieEntier(const std::string& MSG, int min, int max, const std::string&
+MSG_ERREUR, int pos = 7);
 
 // Fonction permettant de demander à l'utilisateur une question en attendant une réponse oui ou non
 // ---------------------------------------------------------------------------------------------------------------------

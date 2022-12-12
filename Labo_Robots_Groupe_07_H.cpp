@@ -18,26 +18,31 @@
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
+using namespace std;
+
 int main() {
 // Initilialisation des constantes du PRG
-const string MSG_ERREUR = "/!\\ Saisie non conforme ...";
+
 const int LARGEUR_MIN   = 10, LARGEUR_MAX   = 1000;
-const int LONGUEUR_MIN  = 10, LONGUEUR_MAX  = 1000;
+const int HAUTEUR_MIN  = 10,  HAUTEUR_MAX   = 1000;
 const int NB_ROBOTS_MIN = 0 , NB_ROBOTS_MAX = 9;
 
+const string MSG_ERREUR            = "/!\\ Saisie non conforme ...";
+const string MSG_SAISIE_LARGEUR    = "largeur";
+   const string MSG_SAISIE_HAUTEUR = "hauteur";
 // Variable pour la largeur et longeur du terrain.
-int largeurTerrain, longeurTerrain;
+int largeurTerrain, hauteurTerrain;
 int nbRobots;
 
 // Message de bienvenu
-cout << "Ce programme réalise le battle royal de robots dans une arene" << endl;
+cout << "Ce programme realise le battle royal de robots dans une arene" << endl;
 
 // Saisie des dimensions du terrains
-largeurTerrain = saisieEntier("largeur", MSG_ERREUR, LARGEUR_MIN, LARGEUR_MAX);
-longeurTerrain = saisieEntier("hauteur", MSG_ERREUR, LONGUEUR_MIN, LONGUEUR_MAX);
+largeurTerrain = saisieEntier(MSG_SAISIE_LARGEUR,  LARGEUR_MIN, LARGEUR_MAX, MSG_ERREUR);
+hauteurTerrain = saisieEntier(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN, HAUTEUR_MAX,MSG_ERREUR);
 
 // Saisie du nombre de robots
-nbRobots = saisieEntier("nbre object", MSG_ERREUR, NB_ROBOTS_MIN, NB_ROBOTS_MAX);
+nbRobots = saisieEntier("nbre object",  NB_ROBOTS_MIN, NB_ROBOTS_MAX, MSG_ERREUR );
 
 // ....
 
