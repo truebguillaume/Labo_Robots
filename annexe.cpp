@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include "annexe.h"
+#include <random>
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
@@ -74,4 +75,16 @@ bool repondOui() {
     }
 
     return recommencer;
+}
+
+// ---------------------------------------------------------------------------------
+// Fonction générant un nombre aléatoire dans une plage déterminée par les bornes
+// D'après le git https://github.com/gmbreguet/PRG1_DEMO/
+int nbAleatoire (int min, int max) {
+
+    random_device                  rand_dev;
+    default_random_engine          generator(rand_dev());
+    uniform_int_distribution<int>  distr(min, max);
+
+    return distr(generator); // retourne int nombre aleatoire générée
 }

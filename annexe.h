@@ -25,4 +25,13 @@ int  saisieEntier(const std::string& MSG, int min, int max, const std::string& M
 // @exceptions              : -
 bool repondOui();
 
+// ---------------------------------------------------------------------------------
+// Fonction générant un nombre aléatoire dans une plage déterminée par des bornes
+// https://github.com/gmbreguet/PRG1_DEMO/
+/// \param min      : Borne minimal de génération
+/// \param max      : Borne maximal de génération
+/// \return         : Chiffre [int] généré aléatoirement dans les bornes
+/// \exception      : - (Aucune exception)
+int nbAleatoire (int min, int max);
+
 #endif //MODELCPP_ANNEXE_H
