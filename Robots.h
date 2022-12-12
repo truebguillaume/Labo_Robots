@@ -13,24 +13,21 @@ using posRob = std::array<Data,2>;
 
 class Robots {
 public :
-// Methode
-// Position du robot en fonction de l'ID
-posRob position(Robots);
+// Constructeur:
+Robots(int id, int x, int y);
+
+int getID() const;   // Attribution ID
+int getX()  const;   // Attribution X
+int getY()  const;   // Attribution Y
+
+void setX();         //
+void setY();
 
 private :
-    int x, // Valeur axe
-        y;
-
-// Deplacer le robots en fonction d'un variable
-void deplacer(Robots, int val);
+    int id; // Identificateur du robot
+    int x, y; // Valeur de l'axe
 
 // Déterminer qui est le vainqueur en fonction de l'arrivée
 bool estVainqueur(Robots, Robots);
-
-// Identification du numéro du robot
-int  initID(unsigned nb);
-
-};
-
 
 #endif //LABO_ROBOTS_ROBOTS_H
