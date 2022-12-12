@@ -14,20 +14,20 @@ using posRob = std::array<Data,2>;
 class Robots {
 public :
 // Constructeur:
-Robots(int id, int x, int y);
+   Robots(int id, int x, int y);
 
-int getID() const;   // Attribution ID
-int getX()  const;   // Attribution X
-int getY()  const;   // Attribution Y
+   int getID() const;   // Attribution ID
+   int getX() const;   // Attribution X
+   int getY() const;   // Attribution Y
 
-void setX();         //
-void setY();
+   void setX();         //
+   void setY();
 
 private :
-    int id; // Identificateur du robot
-    int x, y; // Valeur de l'axe
+   int id; // Identificateur du robot
+   int x, y; // Valeur de l'axe
 
 // Déterminer qui est le vainqueur en fonction de l'arrivée
-bool estVainqueur(Robots, Robots);
-
+   bool estVainqueur(Robots, Robots);
+};
 #endif //LABO_ROBOTS_ROBOTS_H

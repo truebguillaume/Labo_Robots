@@ -12,7 +12,7 @@
 
 #include "Robots.h"
 
-Robots::Robots(int id, int x, int y) : id(id), x(x), y(y);
+Robots::Robots(int id, int x, int y) : id(id), x(x), y(y) {}
 
 void Robots::setX() {this-> x = x;}
 void Robots::setY() {this -> y = y;}
