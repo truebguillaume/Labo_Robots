@@ -29,7 +29,9 @@ const int NB_ROBOTS_MIN = 0 , NB_ROBOTS_MAX = 9;
 
 const string MSG_ERREUR            = "/!\\ Saisie non conforme ...";
 const string MSG_SAISIE_LARGEUR    = "largeur";
-   const string MSG_SAISIE_HAUTEUR = "hauteur";
+const string MSG_SAISIE_HAUTEUR    = "hauteur";
+const string MSG_SAISIE_ROBOTS     = "nbre object";
+
 // Variable pour la largeur et longeur du terrain.
 int largeurTerrain, hauteurTerrain;
 int nbRobots;
@@ -42,10 +44,9 @@ largeurTerrain = saisieEntier(MSG_SAISIE_LARGEUR,  LARGEUR_MIN, LARGEUR_MAX, MSG
 hauteurTerrain = saisieEntier(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN, HAUTEUR_MAX,MSG_ERREUR);
 
 // Saisie du nombre de robots
-nbRobots = saisieEntier("nbre object",  NB_ROBOTS_MIN, NB_ROBOTS_MAX, MSG_ERREUR );
+nbRobots = saisieEntier(MSG_SAISIE_ROBOTS,  NB_ROBOTS_MIN, NB_ROBOTS_MAX, MSG_ERREUR );
 
 // ....
-
 
 cout << "Pressez ENTER pour quitter";
 VIDER_BUFFER;                       // on va surment de faire enculer si on garde

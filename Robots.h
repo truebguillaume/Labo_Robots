@@ -14,14 +14,20 @@ using posRob = std::array<Data,2>;
 class Robots {
 public :
 // Constructeur:
+// Pas de constructeur vide car on contrôle la saisie
    Robots(int id, int x, int y);
 
+// Méthodes
    int getID() const;   // Attribution ID
-   int getX() const;   // Attribution X
-   int getY() const;   // Attribution Y
+   posRob getPos() const;  // Position X, Y
 
-   void setX();         //
-   void setY();
+   // Est-ce pas plus intelligent de mettre un array ?
+  //  int getX() const;    // Attribution X
+  // int getY() const;    // Attribution Y
+
+   void setPos();       // Set position robot -> Nouvelle position
+  // void setX();         //
+  // void setY();         //
 
 private :
    int id; // Identificateur du robot

@@ -14,9 +14,11 @@
 
 Robots::Robots(int id, int x, int y) : id(id), x(x), y(y) {}
 
-void Robots::setX() {this-> x = x;}
-void Robots::setY() {this -> y = y;}
+//void Robots::setX() {this-> x = x;}
+//void Robots::setY() {this -> y = y;}
+void Robots::setPos() {this-> x = x, this -> y = y;}
 
-int Robots::getX() const { return x;}
-int Robots::getY() const { return y;}
+//int Robots::getPos() const {return [x],[y];}
+//int Robots::getX() const { return x;}
+//int Robots::getY() const { return y;}
 int Robots::getID() const {return id;}
