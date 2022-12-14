@@ -11,16 +11,58 @@
 
 
 #include "Robots.h"
-
-
+#include "annexe.h"
 
 Robots::Robots(int id, int x, int y) : id(id), x(x), y(y) {}
 
-//void Robots::setX() {this-> x = x;}
-//void Robots::setY() {this -> y = y;}
-void Robots::setPos() {this-> x = x, this -> y = y;}
+// Get identificateur & position
+// Get X
+int Robots::getX() const {
+    return this->x;
+}
 
-//int Robots::getPos() const {return [x],[y];}
-//int Robots::getX() const { return x;}
-//int Robots::getY() const { return y;}
-int Robots::getID() const {return id;}
+int Robots::getY() const {
+    return this->y;
+}
+
+void Robots::setX(int x) {
+    this-> x = x;
+}
+
+void Robots::setY(int y) {
+    this -> y = y;
+}
+
+void Robots::deplacer(unsigned short nbUnites){
+
+switch(nbUnites){
+//    case int(Direction::DOWN) :
+
+/*
+    switch(direction){
+        case Direction::DOWN:
+            direction = Direction::DOWN;
+            break;
+        case Direction::LEFT:
+            direction = Direction::LEFT;
+            break;
+        case Direction::RIGHT:
+            direction = Direction::RIGHT;
+            break;
+        case Direction::UP:
+            direction = Direction::UP;
+            break;*/
+    }
+}
+
+
+Robots::~Robots(){}
+
+
+
+
+// Set déplacement & position
+void deplacer(unsigned short nbUnites);
+
+// Si on met un array
+int Robots::getID() const {return this->id;}

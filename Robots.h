@@ -8,34 +8,44 @@
 #include <array>
 
 // Using pour réduire lisibilité du code
-using Data = int;
-using posRob = std::array<Data,2>;
+// using Data = int;
+// using posRob = std::array<Data,2>;
 
-// Enum de direction du robots
-enum class Direction{GAUCHE, DROITE, HAUT, BAS};
+// Enum de direction du robots (Ordre du PDF)
+enum class Direction{UP = 1, DOWN = 2, RIGHT = 3, LEFT = 4};
 
 class Robots {
 public :
 // Constructeur:
-// Pas de constructeur vide car on contrôle la saisie
-   Robots(int id, int x, int y);
+   Robots(int id, int x, int y);     // ID, posX, posY
 
 // Méthodes
-   int getID() const;   // Attribution ID
-   posRob getPos() const;  // Position X, Y
-   void deplacer(unsigned short nbUnites);
-   // Est-ce pas plus intelligent de mettre un array ?
-  //  int getX() const;    // Attribution X
-  // int getY() const;    // Attribution Y
+// Get identificateur & position
+    int getID() const;               // Obtenir ID
+    int getX()  const;               // Obtenir position X
+    int getY()  const;               // Obtenir position Y
 
-   void setPos();       // Set position robot -> Nouvelle position
-  // void setX();         //
-  // void setY();         //
+// Set déplacement & position
+   void deplacer(unsigned short nbUnites);
+
+   void setX(int x);
+   void setY(int y);
+
+// Destructeurs
+  ~Robots();
+
+// P-e utilisation de des array
+   //  posRob getPos() const;  // Position X, Y
+   //  void setPos();          // Set position robot -> Nouvelle position
+
 
 private :
+   // Enum pour direction
    Direction direction;
-   int id; // Identificateur du robot
-   int x, y; // Valeur de l'axe
+
+   // Variables utile pour robots
+   int id = 0;                       // Identificateur du robot
+   int x = 0, y = 0;                 // Valeur de l'axe
 
 // Déterminer qui est le vainqueur en fonction de l'arrivée
    bool estVainqueur(Robots, Robots);
