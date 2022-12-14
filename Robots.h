@@ -11,6 +11,9 @@
 using Data = int;
 using posRob = std::array<Data,2>;
 
+// Enum de direction du robots
+enum class Direction{GAUCHE, DROITE, HAUT, BAS};
+
 class Robots {
 public :
 // Constructeur:
@@ -20,7 +23,7 @@ public :
 // Méthodes
    int getID() const;   // Attribution ID
    posRob getPos() const;  // Position X, Y
-
+   void deplacer(unsigned short nbUnites);
    // Est-ce pas plus intelligent de mettre un array ?
   //  int getX() const;    // Attribution X
   // int getY() const;    // Attribution Y
@@ -30,6 +33,7 @@ public :
   // void setY();         //
 
 private :
+   Direction direction;
    int id; // Identificateur du robot
    int x, y; // Valeur de l'axe
 
