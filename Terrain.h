@@ -7,10 +7,12 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 
 #include "Robots.h"
 
-enum Topologie {B,T};
+// B = barrière / T = terrain
+enum  Topologie {B,T};
 using LigneTerrain = std::vector<Topologie>;
 using DetailsTerrain = std::vector<LigneTerrain>;
 
@@ -18,15 +20,12 @@ class Terrain {
 public:
 
     // CONSTRUCTEUR ----------------------------------------------------------------------------------------------------
-    Terrain() : Terrain(10,10){};
-    Terrain(unsigned _largeur, unsigned _hauteur)
-    : largeur(_largeur), hauteur(_hauteur){
-        construitTerrain();
-    };
+    Terrain(unsigned _largeur = 10, unsigned _hauteur = 10) : largeur(_largeur), hauteur(_hauteur){};
 
     // METHODES --------------------------------------------------------------------------------------------------------
-    void afficherTerrain(Robots robots);
-    bool deplacementPossible(Robots robots);
+    //void afficherTerrain(Robots robots);
+    //bool deplacementPossible(Robots robots);
+    void afficher();
 
 private:
     // DATA ------------------------------------------------------------------------------------------------------------
@@ -35,8 +34,7 @@ private:
     std::vector<std::string> tableauScore;
 
     // METHODES --------------------------------------------------------------------------------------------------------
-    void construitTerrain();
-};
 
+};
 
 #endif //LABO_ROBOTS_TERRAIN_H

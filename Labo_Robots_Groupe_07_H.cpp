@@ -15,6 +15,9 @@
 #include <string>       // Utilisation string
 
 #include "annexe.h"     // Librairie personnelle (gestion saisie,...)
+#include "terrain.h"    // Classe terrain
+#include "robots.h"     // Classe robots
+
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
@@ -33,20 +36,25 @@ const string MSG_SAISIE_HAUTEUR    = "hauteur";
 const string MSG_SAISIE_ROBOTS     = "nbre object";
 
 // Variable pour la largeur et longeur du terrain.
-int largeurTerrain, hauteurTerrain;
-int nbRobots;
+unsigned largeurTerrain, hauteurTerrain;
+unsigned nbRobots;
 
 // Message de bienvenu
 cout << "Ce programme realise le battle royal de robots dans une arene" << endl;
 
 // Saisie des dimensions du terrains
-largeurTerrain = saisieEntier(MSG_SAISIE_LARGEUR,  LARGEUR_MIN, LARGEUR_MAX, MSG_ERREUR);
-hauteurTerrain = saisieEntier(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN, HAUTEUR_MAX,MSG_ERREUR);
+largeurTerrain = (unsigned)saisieEntier(MSG_SAISIE_LARGEUR,  LARGEUR_MIN, LARGEUR_MAX, MSG_ERREUR);
+hauteurTerrain = (unsigned)saisieEntier(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN, HAUTEUR_MAX,MSG_ERREUR);
 
 // Saisie du nombre de robots
-nbRobots = saisieEntier(MSG_SAISIE_ROBOTS,  NB_ROBOTS_MIN, NB_ROBOTS_MAX, MSG_ERREUR );
+nbRobots = (unsigned)saisieEntier(MSG_SAISIE_ROBOTS,  NB_ROBOTS_MIN, NB_ROBOTS_MAX, MSG_ERREUR);
 
-// ....
+for(unsigned i = 0 ; i < nbRobots ; ++i){
+
+}
+
+Terrain monTerrain = Terrain(largeurTerrain, hauteurTerrain);
+monTerrain.afficher();
 
 cout << "Pressez ENTER pour quitter";
 VIDER_BUFFER;                       // on va surment de faire enculer si on garde
@@ -54,4 +62,3 @@ VIDER_BUFFER;                       // on va surment de faire enculer si on gard
 
 return EXIT_SUCCESS;
 }
-

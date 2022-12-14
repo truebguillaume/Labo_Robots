@@ -27,7 +27,7 @@ int saisieEntier(const string& MSG, int min, int max, const string& MSG_ERREUR,
 
     do {
         // Affichage message de demande de saisie
-        cout << MSG << setw(pos) <<  "[" << min << ".." << max << "] :";
+        cout << MSG << setw(pos) <<  "[" << min << ".." << max << "] : ";
 
         // Vérifie si le flux est cassé ou si la valeur est en dehors des valeurs minimum et maximum
         erreur = not(cin >> saisie) or saisie < min or saisie > max;
