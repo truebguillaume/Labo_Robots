@@ -7,6 +7,15 @@
 
 #include <array>
 
+/*
+ Tout ce qui est en position x corresponds à la largeur
+ y = hauteur
+
+
+
+
+*/
+
 // Using pour réduire lisibilité du code
 // using Data = int;
 // using posRob = std::array<Data,2>;
@@ -17,20 +26,20 @@ enum class Direction{UP = 1, DOWN = 2, RIGHT = 3, LEFT = 4};
 class Robots {
 public :
 // Constructeur:
-   Robots(int id, int x, int y);     // ID, posX, posY
+   Robots(unsigned id, unsigned x, unsigned y);     // ID, posX, posY
 
 // Méthodes
 // Get identificateur & position
-    int getID() const;               // Obtenir ID
-    int getX()  const;               // Obtenir position X
-    int getY()  const;               // Obtenir position Y
+    unsigned getID() const;               // Obtenir ID
+    unsigned getX()  const;               // Obtenir position X
+    unsigned getY()  const;               // Obtenir position Y
 
 // Set déplacement & position
    void deplacer(unsigned short nbUnites);
    bool positionDUnRobots(unsigned posX, unsigned posY);
 
-   void setX(int x);
-   void setY(int y);
+   void setX(unsigned x);
+   void setY(unsigned y);
 
 // Destructeurs
   ~Robots();
@@ -45,10 +54,11 @@ private :
    Direction direction;
 
    // Variables utile pour robots
-   int id = 0;                       // Identificateur du robot
-   int x = 0, y = 0;                 // Valeur de l'axe
+   unsigned id = 0;                       // Identificateur du robot
+   unsigned x = 0, y = 0;                 // Valeur de l'axe
 
    // Déterminer qui est le vainqueur en fonction de l'arrivée
    bool estVainqueur(Robots, Robots);
+
 };
 #endif //LABO_ROBOTS_ROBOTS_H

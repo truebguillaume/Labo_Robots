@@ -82,11 +82,11 @@ bool repondOui() {
 // ---------------------------------------------------------------------------------
 // Fonction générant un nombre aléatoire dans une plage déterminée par les bornes
 // D'après le git https://github.com/gmbreguet/PRG1_DEMO/
-int nbAleatoire (int min, int max) {
+unsigned nbAleatoire (unsigned min, unsigned max) {
 
     random_device                  rand_dev;
     default_random_engine          generator(rand_dev());
-    uniform_int_distribution<int>  distr(min, max);
+    uniform_int_distribution<unsigned>  distr(min, max);
 
     return distr(generator); // retourne int nombre aleatoire générée
 }

@@ -34,6 +34,6 @@ bool repondOui();
 /// \param max      : Borne maximal de génération
 /// \return         : Chiffre [int] généré aléatoirement dans les bornes
 /// \exception      : - (Aucune exception)
-int nbAleatoire (int min, int max);
+unsigned nbAleatoire (unsigned min, unsigned max);
 
 #endif //MODELCPP_ANNEXE_H

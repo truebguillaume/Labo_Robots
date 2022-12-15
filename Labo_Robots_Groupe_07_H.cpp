@@ -28,7 +28,7 @@ int main() {
 
 const int LARGEUR_MIN   = 10, LARGEUR_MAX   = 1000;
 const int HAUTEUR_MIN  = 10,  HAUTEUR_MAX   = 1000;
-const int NB_ROBOTS_MIN = 0 , NB_ROBOTS_MAX = 9;
+const int NB_ROBOTS_MIN = 1 , NB_ROBOTS_MAX = 9;
 
 const string MSG_ERREUR            = "/!\\ Saisie non conforme ...";
 const string MSG_SAISIE_LARGEUR    = "largeur";

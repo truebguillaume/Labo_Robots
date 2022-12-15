@@ -12,24 +12,25 @@
 
 #include "Robots.h"
 #include "annexe.h"
+#include <random>
 
-Robots::Robots(int id, int x, int y) : id(id), x(x), y(y) {}
+Robots::Robots(unsigned id, unsigned x, unsigned y) : id(id), x(x), y(y) {}
 
 // Get identificateur & position
 // Get X
-int Robots::getX() const {
+unsigned Robots::getX() const {
     return this->x;
 }
 
-int Robots::getY() const {
+unsigned Robots::getY() const {
     return this->y;
 }
 
-void Robots::setX(int x) {
+void Robots::setX(unsigned x) {
     this-> x = x;
 }
 
-void Robots::setY(int y) {
+void Robots::setY(unsigned y) {
     this -> y = y;
 }
 
@@ -39,26 +40,30 @@ bool Robots::positionDUnRobots(unsigned posX, unsigned posY){
     return false;
 }
 
-void Robots::deplacer(unsigned short nbUnites){
+void Robots::deplacer(unsigned short nbUnites) {
 
-switch(nbUnites){
-//    case int(Direction::DOWN) :
+    auto randDirection = (Direction) nbAleatoire(0,3);
 
-/*
-    switch(direction){
-        case Direction::DOWN:
-            direction = Direction::DOWN;
-            break;
-        case Direction::LEFT:
-            direction = Direction::LEFT;
-            break;
-        case Direction::RIGHT:
-            direction = Direction::RIGHT;
-            break;
-        case Direction::UP:
-            direction = Direction::UP;
-            break;*/
-    }
+    do{
+        switch(randDirection) {
+            case Direction::DOWN:
+                direction = (Direction) +nbUnites;
+                break;
+
+            case Direction::LEFT:
+                direction = (Direction) -nbUnites;
+                break;
+
+            case Direction::RIGHT:
+                direction = (Direction) +nbUnites;
+                break;
+
+            case Direction::UP:
+                direction = (Direction) -nbUnites;
+                break;
+        }
+
+    }while(true);
 }
 
 
@@ -70,4 +75,4 @@ Robots::~Robots(){}
 void deplacer(unsigned short nbUnites);
 
 // Si on met un array
-int Robots::getID() const {return this->id;}
+unsigned Robots::getID() const {return this->id;}
