@@ -25,7 +25,7 @@ public:
     // METHODES --------------------------------------------------------------------------------------------------------
     //void afficherTerrain(Robots robots);
     //bool deplacementPossible(Robots robots);
-    void afficher();
+    void afficher(std::vector<Robots>& vecRobots);
 
 private:
     // DATA ------------------------------------------------------------------------------------------------------------

@@ -27,6 +27,7 @@ public :
 
 // Set déplacement & position
    void deplacer(unsigned short nbUnites);
+   bool positionDUnRobots(unsigned posX, unsigned posY);
 
    void setX(int x);
    void setY(int y);
@@ -47,7 +48,7 @@ private :
    int id = 0;                       // Identificateur du robot
    int x = 0, y = 0;                 // Valeur de l'axe
 
-// Déterminer qui est le vainqueur en fonction de l'arrivée
+   // Déterminer qui est le vainqueur en fonction de l'arrivée
    bool estVainqueur(Robots, Robots);
 };
 #endif //LABO_ROBOTS_ROBOTS_H

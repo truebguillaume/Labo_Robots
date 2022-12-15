@@ -33,6 +33,12 @@ void Robots::setY(int y) {
     this -> y = y;
 }
 
+bool Robots::positionDUnRobots(unsigned posX, unsigned posY){
+    if(this->getX() == posX && this->getY() == posY)
+        return true;
+    return false;
+}
+
 void Robots::deplacer(unsigned short nbUnites){
 
 switch(nbUnites){
@@ -57,7 +63,6 @@ switch(nbUnites){
 
 
 Robots::~Robots(){}
-
 
 
 

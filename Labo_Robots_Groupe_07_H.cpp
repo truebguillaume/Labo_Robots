@@ -49,12 +49,17 @@ hauteurTerrain = (unsigned)saisieEntier(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN, HAUTEUR
 // Saisie du nombre de robots
 nbRobots = (unsigned)saisieEntier(MSG_SAISIE_ROBOTS,  NB_ROBOTS_MIN, NB_ROBOTS_MAX, MSG_ERREUR);
 
-for(unsigned i = 0 ; i < nbRobots ; ++i){
+vector<Robots> vecRobots;
+vecRobots.reserve(nbRobots);
 
+for(unsigned i = 0 ; i < nbRobots ; ++i){
+    unsigned posX = nbAleatoire(0,largeurTerrain);
+    unsigned posY = nbAleatoire(0,hauteurTerrain);
+    vecRobots.insert(vecRobots.end(),Robots(i,posX,posY));
 }
 
 Terrain monTerrain = Terrain(largeurTerrain, hauteurTerrain);
-monTerrain.afficher();
+monTerrain.afficher(vecRobots);
 
 cout << "Pressez ENTER pour quitter";
 VIDER_BUFFER;                       // on va surment de faire enculer si on garde
