@@ -6,6 +6,7 @@
 #define LABO_ROBOTS_ROBOTS_H
 
 #include <array>
+#include <vector>
 
 /*
  Tout ce qui est en position x corresponds à la largeur
@@ -36,7 +37,7 @@ public :
 
 // Set déplacement & position
    void deplacer(unsigned short nbUnites);
-   bool positionDUnRobots(unsigned posLargeur, unsigned posHauteur);
+   //bool positionDUnRobots(unsigned posLargeur, unsigned posHauteur, const std::vector<Robots>& robots);
 
    void setX(unsigned posLargeur);
    void setY(unsigned posHauteur);

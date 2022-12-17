@@ -14,6 +14,8 @@
 #include "annexe.h"
 #include <random>
 
+using namespace std;
+
 Robots::Robots(unsigned id, unsigned posLargeur, unsigned posHauteur)
     : id(id), posLargeur(posLargeur), posHauteur(posHauteur) {}
 
@@ -37,11 +39,14 @@ void Robots::setPosHauteur(unsigned posHauteur) {
 }
 */
 
-bool Robots::positionDUnRobots(unsigned posLargeur, unsigned posHauteur){
-    if(this->getPosLargeur() == posLargeur && this->getPosHauteur() == posHauteur)
-        return true;
+/*bool Robots::positionDUnRobots(unsigned _posLargeur, unsigned _posHauteur, const vector<Robots>& robots){
+    for(const Robots& r : robots)
+    {
+        if(r.getPosLargeur() == _posLargeur && r.getPosHauteur() == _posHauteur)
+            return true;
+    }
     return false;
-}
+}*/
 
 void Robots::deplacer(unsigned short nbUnites) {
 

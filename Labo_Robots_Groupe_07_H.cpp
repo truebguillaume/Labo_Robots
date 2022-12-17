@@ -52,9 +52,12 @@ nbRobots = (unsigned)saisieEntier(MSG_SAISIE_ROBOTS,  NB_ROBOTS_MIN, NB_ROBOTS_M
 vector<Robots> vecRobots;
 vecRobots.reserve(nbRobots);
 
+unsigned posLargeur, posHauteur;
+
 for(unsigned i = 0 ; i < nbRobots ; ++i){
-    unsigned posLargeur = nbAleatoire(0,largeurTerrain);
-    unsigned posHauteur = nbAleatoire(0,hauteurTerrain);
+    posLargeur = nbAleatoire(0,largeurTerrain);
+    posHauteur = nbAleatoire(0,hauteurTerrain);
+
     vecRobots.insert(vecRobots.end(),Robots(i,posLargeur,posHauteur));
 }
 
