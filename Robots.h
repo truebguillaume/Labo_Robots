@@ -26,20 +26,20 @@ enum class Direction{UP = 1, DOWN = 2, RIGHT = 3, LEFT = 4};
 class Robots {
 public :
 // Constructeur:
-   Robots(unsigned id, unsigned x, unsigned y);     // ID, posX, posY
+   Robots(unsigned id, unsigned posLargeur, unsigned posHauteur);     // ID, posX, posY
 
 // Méthodes
 // Get identificateur & position
     unsigned getID() const;               // Obtenir ID
-    unsigned getX()  const;               // Obtenir position X
-    unsigned getY()  const;               // Obtenir position Y
+    unsigned getPosLargeur()  const;               // Obtenir position X
+    unsigned getPosHauteur()  const;               // Obtenir position Y
 
 // Set déplacement & position
    void deplacer(unsigned short nbUnites);
-   bool positionDUnRobots(unsigned posX, unsigned posY);
+   bool positionDUnRobots(unsigned posLargeur, unsigned posHauteur);
 
-   void setX(unsigned x);
-   void setY(unsigned y);
+   void setX(unsigned posLargeur);
+   void setY(unsigned posHauteur);
 
 // Destructeurs
   ~Robots();
@@ -55,10 +55,10 @@ private :
 
    // Variables utile pour robots
    unsigned id = 0;                       // Identificateur du robot
-   unsigned x = 0, y = 0;                 // Valeur de l'axe
+   unsigned posLargeur = 0, posHauteur = 0;                 // Valeur de l'axe
 
    // Déterminer qui est le vainqueur en fonction de l'arrivée
-   bool estVainqueur(Robots, Robots);
+   //bool estVainqueur(Robots, Robots);
 
 };
 #endif //LABO_ROBOTS_ROBOTS_H

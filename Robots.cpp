@@ -14,28 +14,31 @@
 #include "annexe.h"
 #include <random>
 
-Robots::Robots(unsigned id, unsigned x, unsigned y) : id(id), x(x), y(y) {}
+Robots::Robots(unsigned id, unsigned posLargeur, unsigned posHauteur)
+    : id(id), posLargeur(posLargeur), posHauteur(posHauteur) {}
 
 // Get identificateur & position
 // Get X
-unsigned Robots::getX() const {
-    return this->x;
+unsigned Robots::getPosLargeur() const {
+    return this->posLargeur;
 }
 
-unsigned Robots::getY() const {
-    return this->y;
+unsigned Robots::getPosHauteur() const {
+    return this->posHauteur;
 }
 
-void Robots::setX(unsigned x) {
-    this-> x = x;
+/*
+void Robots::setPosLargeur(unsigned posLargeur) {
+    this-> posLargeur = posLargeur;
 }
 
-void Robots::setY(unsigned y) {
-    this -> y = y;
+void Robots::setPosHauteur(unsigned posHauteur) {
+    this -> posHauteur = posHauteur;
 }
+*/
 
-bool Robots::positionDUnRobots(unsigned posX, unsigned posY){
-    if(this->getX() == posX && this->getY() == posY)
+bool Robots::positionDUnRobots(unsigned posLargeur, unsigned posHauteur){
+    if(this->getPosLargeur() == posLargeur && this->getPosHauteur() == posHauteur)
         return true;
     return false;
 }

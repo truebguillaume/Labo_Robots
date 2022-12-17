@@ -28,7 +28,7 @@ int main() {
 
 const int LARGEUR_MIN   = 10, LARGEUR_MAX   = 1000;
 const int HAUTEUR_MIN  = 10,  HAUTEUR_MAX   = 1000;
-const int NB_ROBOTS_MIN = 1 , NB_ROBOTS_MAX = 9;
+const int NB_ROBOTS_MIN = 1 , NB_ROBOTS_MAX = 10;
 
 const string MSG_ERREUR            = "/!\\ Saisie non conforme ...";
 const string MSG_SAISIE_LARGEUR    = "largeur";
@@ -53,9 +53,9 @@ vector<Robots> vecRobots;
 vecRobots.reserve(nbRobots);
 
 for(unsigned i = 0 ; i < nbRobots ; ++i){
-    unsigned posX = nbAleatoire(0,largeurTerrain);
-    unsigned posY = nbAleatoire(0,hauteurTerrain);
-    vecRobots.insert(vecRobots.end(),Robots(i,posX,posY));
+    unsigned posLargeur = nbAleatoire(0,largeurTerrain);
+    unsigned posHauteur = nbAleatoire(0,hauteurTerrain);
+    vecRobots.insert(vecRobots.end(),Robots(i,posLargeur,posHauteur));
 }
 
 Terrain monTerrain = Terrain(largeurTerrain, hauteurTerrain);

@@ -12,15 +12,15 @@ void Terrain::afficher(vector<Robots>& vecRobots) {
         cout << "-";
 
     cout << endl;
-    for(unsigned i = 0 ; i < this->hauteur ; ++i){
+    for(unsigned i = 0 ; i <= this->hauteur ; ++i){
         cout << "|";
-        for(unsigned j = 0 ; j < this->largeur ; ++j){
+        for(unsigned j = 0 ; j <= this->largeur ; ++j){
             //auto it = find_if(vecRobots.begin(),vecRobots.end(),Robots::positionDUnRobots());
             string sortie = " ";
             bool aRobots = false;
             for(const Robots& r : vecRobots)
             {
-                if(r.getX() == i && r.getY() == j)
+                if(r.getPosLargeur() == j && r.getPosHauteur() == i)
                 {
                     aRobots = true;
                     sortie = to_string(r.getID());
