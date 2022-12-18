@@ -1,6 +1,13 @@
-//
-// Created by Guillaume Trüeb on 12.12.22.
-//
+// ---------------------------------------------------------------------------------
+// Fichier        : Robots.h
+// Auteur(s)      : Bee Gianni & Trüeb Guillaume
+// Date           : 18 décembre 2022
+// But            : Ce programme représente les robots qui font combattent
+// Modifications  : NIL
+// Remarque(s)    : -
+// Compilateur    : Apple clang version 14.0.0
+// C++ version    : C++20
+// ---------------------------------------------------------------------------------
 
 #ifndef LABO_ROBOTS_ROBOTS_H
 #define LABO_ROBOTS_ROBOTS_H

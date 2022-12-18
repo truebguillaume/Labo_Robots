@@ -3,20 +3,20 @@
 // Auteur(s)      : Bee Gianni & Trüeb Guillaume
 // Date           : 18 décembre 2022
 // But            : Ce programme réalise le battle royal d'un nombre de robots
-//                  défini par l'utilisateur dans un terrain. La saisi des dimensions
-//                  du terrain est effectué par l'utilisateur. Le programme s'interrompe
-//                  lorsqu'il n'y a plus qu'un robots.
+//                  défini par l'utilisateur dans un terrain. La saisi des
+//                  dimensions du terrain est effectué par l'utilisateur. Le
+//                  programme s'interrompe. lorsqu'il n'y a plus qu'un robots.
 // Modifications  : NIL
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
 // C++ version    : C++20
 // ---------------------------------------------------------------------------------
 
-#include <iostream>     // cout, cin
-#include <cstdlib>      // EXIT_SUCCESS
-#include <limits>       // Numeric limits
-#include <string>       // Utilisation string
-
+#include <iostream>     // cout, cin§
+#include <cstdlib>      // EXIT_SUCCESS§
+#include <limits>       // Numeric limits§
+#include <string>       // Utilisation stri§ng
+#include <thread>       // sleep for
 #include "annexe.h"     // Librairie personnelle (gestion saisie,...)
 #include "terrain.h"    // Classe terrain
 #include "robots.h"     // Classe robots
@@ -38,7 +38,7 @@ const int NB_ROBOTS_MIN = 1 , NB_ROBOTS_MAX = 10;     // Nombre minimal / maxima
 
 // Message d'erreur et de saisi d'utilisateur
 const string MSG_ERREUR            = "/!\\ Saisie non conforme ...";
-const string MSG_BIENVENU          = "Ce programme realise le battle royal de robots dans une arene"
+const string MSG_BIENVENU          = "Ce programme realise le battle royal de robots dans une arene";
 const string MSG_SAISIE_LARGEUR    = "largeur";
 const string MSG_SAISIE_HAUTEUR    = "hauteur";
 const string MSG_SAISIE_ROBOTS     = "nbre object";
@@ -74,8 +74,21 @@ for(unsigned i = 0 ; i < nbRobots ; ++i){
     vecRobots.insert(vecRobots.end(),Robots(i,posLargeur,posHauteur));
 }
 
-Terrain monTerrain = Terrain(largeurTerrain, hauteurTerrain);
-monTerrain.afficher(vecRobots);
+while(nbRobots > 1){
+    Terrain monTerrain = Terrain(largeurTerrain, hauteurTerrain);
+    monTerrain.afficher(vecRobots);
+
+    // Pause d'excution (PDF)
+    this_thread::sleep_for(500ms);
+
+    // Gestion du clear d'affichage
+    #ifdef _WIN32
+    system("cls");      // WINDOWS
+    #else
+    system("clear");    // MAC
+    #endif
+}
+
 
 cout << "Pressez ENTER pour quitter";
 VIDER_BUFFER;                       // on va surment de faire enculer si on garde

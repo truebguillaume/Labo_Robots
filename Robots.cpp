@@ -1,13 +1,14 @@
 // ---------------------------------------------------------------------------------
-// Demo           : Robots
 // Fichier        : Robots.cpp
 // Auteur(s)      : Bee Gianni & Trüeb Guillaume
-// But            : Réalisation d'un battle royal de robot dans une arène
-// Modifications  :
+// Date           : 18 décembre 2022
+// But            : Ce programme représente les robots qui font combattent
+// Modifications  : NIL
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
 // C++ version    : C++20
 // ---------------------------------------------------------------------------------
+
 
 #include "Robots.h"
 #include "annexe.h"
@@ -45,20 +46,13 @@ bool Robots::operator==(const Robots& robots) const{
 }
 
 
-
-bool deplacer(Robots& robots, unsigned short nbUnites, Direction direction){
-   int axe;
-   bool positif;
-
-   do{
-      axe = nbAleatoire(0,1);
-      positif = nbAleatoire(0,1);
-
-      deplacement[int(direction)] += positif ? nbUnites : -nbUnites;
-   }while(true);
-
+/*
+void deplacer(Robots& robots, unsigned short nbUnites){
+    for(Robots& robots : robots){
+        robots.deplacer((Direction) nbUnites);
+    }
 }
-
+*/
 
 Robots::~Robots(){}
 
