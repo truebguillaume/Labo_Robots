@@ -26,6 +26,8 @@
 
 using namespace std;
 
+
+
 int main() {
 
 // ---------------------------------------------------------------------------------
@@ -68,8 +70,11 @@ vecRobots.reserve(nbRobots);
 unsigned posLargeur, posHauteur;
 
 for(unsigned i = 0 ; i < nbRobots ; ++i){
-    posLargeur = nbAleatoire(0,largeurTerrain);
-    posHauteur = nbAleatoire(0,hauteurTerrain);
+    do{
+        posLargeur = nbAleatoire(0,largeurTerrain);
+        posHauteur = nbAleatoire(0,hauteurTerrain);
+    }while(Robots::positionDUnRobot(vecRobots,largeurTerrain,hauteurTerrain));
+
 
     vecRobots.insert(vecRobots.end(),Robots(i,posLargeur,posHauteur));
 }

@@ -31,14 +31,15 @@ public :
 
    // Set déplacement & position
    bool deplacer(Direction direction, unsigned short nbUnites);
+   static bool positionDUnRobot(const std::vector<Robots>& vecRobots, unsigned posLargeur, unsigned posHauteur);
    void setPosLargeur(unsigned posLargeur);
    void setPosHauteur(unsigned posHauteur);
 
-   // Opérateur de flux
-   bool operator==(const Robots& robots) const;
+    // Opérateur de flux
+    bool operator==(const Robots& robots) const;
 
-  // Destructeurs
-  ~Robots();
+    // Destructeurs
+    ~Robots();
 
 private :
 

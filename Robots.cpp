@@ -37,8 +37,13 @@ void Robots::setPosHauteur(unsigned posHauteur) {
     this -> posHauteur = posHauteur;
 }
 
-
-
+bool Robots::positionDUnRobot(const vector<Robots>& vecRobots, unsigned posLargeur, unsigned posHauteur){
+    for(const Robots& r : vecRobots){
+        if(r.getPosLargeur() == posLargeur && r.getPosHauteur() == posHauteur)
+            return true;
+    }
+    return false;
+}
 
 bool Robots::operator==(const Robots& robots) const{
    return (this->posHauteur == robots.posHauteur &&
