@@ -20,7 +20,6 @@ Robots::Robots(unsigned id, unsigned posLargeur, unsigned posHauteur)
     : id(id), posLargeur(posLargeur), posHauteur(posHauteur) {}
 
 // Get identificateur & position
-// Get X
 unsigned Robots::getPosLargeur() const {
     return this->posLargeur;
 }
@@ -29,7 +28,6 @@ unsigned Robots::getPosHauteur() const {
     return this->posHauteur;
 }
 
-/*
 void Robots::setPosLargeur(unsigned posLargeur) {
     this-> posLargeur = posLargeur;
 }
@@ -37,7 +35,6 @@ void Robots::setPosLargeur(unsigned posLargeur) {
 void Robots::setPosHauteur(unsigned posHauteur) {
     this -> posHauteur = posHauteur;
 }
-*/
 
 /*bool Robots::positionDUnRobots(unsigned _posLargeur, unsigned _posHauteur, const vector<Robots>& robots){
     for(const Robots& r : robots)
@@ -48,32 +45,13 @@ void Robots::setPosHauteur(unsigned posHauteur) {
     return false;
 }*/
 
-void Robots::deplacer(unsigned short nbUnites) {
+bool deplacer(Direction direction, unsigned short nbUnites);
 
-    auto randDirection = (Direction) nbAleatoire(0,3);
 
-    do{
-        switch(randDirection) {
-            case Direction::DOWN:
-                direction = (Direction) +nbUnites;
-                break;
-
-            case Direction::LEFT:
-                direction = (Direction) -nbUnites;
-                break;
-
-            case Direction::RIGHT:
-                direction = (Direction) +nbUnites;
-                break;
-
-            case Direction::UP:
-                direction = (Direction) -nbUnites;
-                break;
-        }
-
-    }while(true);
+bool Robots::operator==(const Robots& robots) const{
+   return (this->posHauteur == robots.posHauteur &&
+           this -> posLargeur == robots.posLargeur);
 }
-
 
 Robots::~Robots(){}
 

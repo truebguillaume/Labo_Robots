@@ -26,40 +26,35 @@ enum class Direction{UP = 1, DOWN = 2, RIGHT = 3, LEFT = 4};
 
 class Robots {
 public :
-// Constructeur:
+   // Constructeur:
    Robots(unsigned id, unsigned posLargeur, unsigned posHauteur);     // ID, posX, posY
 
-// Méthodes
-// Get identificateur & position
-    unsigned getID() const;               // Obtenir ID
+   // Méthodes
+   // Get identificateur & position
+    unsigned getID() const;                        // Obtenir ID
     unsigned getPosLargeur()  const;               // Obtenir position X
     unsigned getPosHauteur()  const;               // Obtenir position Y
 
-// Set déplacement & position
-   void deplacer(unsigned short nbUnites);
-   //bool positionDUnRobots(unsigned posLargeur, unsigned posHauteur, const std::vector<Robots>& robots);
+   // Set déplacement & position
+   bool deplacer(Direction direction, unsigned short nbUnites);
+   void setPosLargeur(unsigned posLargeur);
+   void setPosHauteur(unsigned posHauteur);
 
-   void setX(unsigned posLargeur);
-   void setY(unsigned posHauteur);
+   // Opérateur de flux
+   bool operator==(const Robots& robots) const;
 
-// Destructeurs
+  // Destructeurs
   ~Robots();
 
-// P-e utilisation de des array
-   //  posRob getPos() const;  // Position X, Y
-   //  void setPos();          // Set position robot -> Nouvelle position
-
-
+   //bool positionDUnRobots(unsigned posLargeur, unsigned posHauteur, const std::vector<Robots>& robots);
 private :
+
    // Enum pour direction
    Direction direction;
 
    // Variables utile pour robots
-   unsigned id = 0;                       // Identificateur du robot
-   unsigned posLargeur = 0, posHauteur = 0;                 // Valeur de l'axe
-
-   // Déterminer qui est le vainqueur en fonction de l'arrivée
-   //bool estVainqueur(Robots, Robots);
+   unsigned id = 0;                             // Identificateur du robot
+   unsigned posLargeur = 0, posHauteur = 0;     // Valeur de l'axe
 
 };
 #endif //LABO_ROBOTS_ROBOTS_H
