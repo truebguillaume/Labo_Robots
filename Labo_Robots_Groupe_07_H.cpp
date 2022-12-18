@@ -1,9 +1,12 @@
 // ---------------------------------------------------------------------------------
-// Demo           : Labo_Robots_Groupe_07_H
 // Fichier        : Labo_Robots_Groupe_07_H.cpp
 // Auteur(s)      : Bee Gianni & Trüeb Guillaume
-// But            : Réalisation d'un battle royal de robot dans une arène
-// Modifications  :
+// Date           : 18 décembre 2022
+// But            : Ce programme réalise le battle royal d'un nombre de robots
+//                  défini par l'utilisateur dans un terrain. La saisi des dimensions
+//                  du terrain est effectué par l'utilisateur. Le programme s'interrompe
+//                  lorsqu'il n'y a plus qu'un robots.
+// Modifications  : NIL
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
 // C++ version    : C++20
@@ -24,30 +27,40 @@
 using namespace std;
 
 int main() {
-// Initilialisation des constantes du PRG
 
-const int LARGEUR_MIN   = 10, LARGEUR_MAX   = 1000;
-const int HAUTEUR_MIN  = 10,  HAUTEUR_MAX   = 1000;
-const int NB_ROBOTS_MIN = 1 , NB_ROBOTS_MAX = 10;
+// ---------------------------------------------------------------------------------
+// Constante pour la génération du terrain
+const int LARGEUR_MIN   = 10,  LARGEUR_MAX   = 1000;  // Largeur minimal / maximal
+const int HAUTEUR_MIN   = 10,  HAUTEUR_MAX   = 1000;  // Hauteur minimal / maximal
 
+// Constante pour le nombre de robots présent lors du combat
+const int NB_ROBOTS_MIN = 1 , NB_ROBOTS_MAX = 10;     // Nombre minimal / maximal
+
+// Message d'erreur et de saisi d'utilisateur
 const string MSG_ERREUR            = "/!\\ Saisie non conforme ...";
+const string MSG_BIENVENU          = "Ce programme realise le battle royal de robots dans une arene"
 const string MSG_SAISIE_LARGEUR    = "largeur";
 const string MSG_SAISIE_HAUTEUR    = "hauteur";
 const string MSG_SAISIE_ROBOTS     = "nbre object";
 
-// Variable pour la largeur et longeur du terrain.
+// Variable saisi par l'utilisateur pour la largeur et la hauteur du terrain
 unsigned largeurTerrain, hauteurTerrain;
+// Variable saisi par l'utilisateur pour le nombre de robot(s)
 unsigned nbRobots;
 
+// ---------------------------------------------------------------------------------
 // Message de bienvenu
-cout << "Ce programme realise le battle royal de robots dans une arene" << endl;
+cout << MSG_BIENVENU << endl;
 
-// Saisie des dimensions du terrains
-largeurTerrain = (unsigned)saisieEntier(MSG_SAISIE_LARGEUR,  LARGEUR_MIN, LARGEUR_MAX, MSG_ERREUR);
-hauteurTerrain = (unsigned)saisieEntier(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN, HAUTEUR_MAX,MSG_ERREUR);
+// Saisie des dimensions du terrain
+largeurTerrain = (unsigned)saisieEntier(MSG_SAISIE_LARGEUR,  LARGEUR_MIN,
+                                        LARGEUR_MAX, MSG_ERREUR);
+hauteurTerrain = (unsigned)saisieEntier(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN,
+                                        HAUTEUR_MAX,MSG_ERREUR);
 
 // Saisie du nombre de robots
-nbRobots = (unsigned)saisieEntier(MSG_SAISIE_ROBOTS,  NB_ROBOTS_MIN, NB_ROBOTS_MAX, MSG_ERREUR);
+nbRobots       = (unsigned)saisieEntier(MSG_SAISIE_ROBOTS,  NB_ROBOTS_MIN,
+                                        NB_ROBOTS_MAX, MSG_ERREUR);
 
 vector<Robots> vecRobots;
 vecRobots.reserve(nbRobots);

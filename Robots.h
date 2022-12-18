@@ -38,10 +38,6 @@ private :
    // Enum pour direction
    Direction direction;
 
-   bool estObstacle(const Terrain& terrain, const Robots& Robots){
-      return
-   }
-
    // Variables utile pour robots
    unsigned id = 0;                             // Identificateur du robot
    unsigned posLargeur = 0, posHauteur = 0;     // Valeur de l'axe

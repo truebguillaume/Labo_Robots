@@ -11,6 +11,8 @@
 
 #include "Robots.h"
 #include "annexe.h"
+#include <array>
+#include <random>
 
 using namespace std;
 
@@ -34,7 +36,7 @@ void Robots::setPosHauteur(unsigned posHauteur) {
     this -> posHauteur = posHauteur;
 }
 
-bool deplacer(Direction direction, unsigned short nbUnites);
+
 
 
 bool Robots::operator==(const Robots& robots) const{
@@ -43,6 +45,19 @@ bool Robots::operator==(const Robots& robots) const{
 }
 
 
+
+bool deplacer(Robots& robots, unsigned short nbUnites, Direction direction){
+   int axe;
+   bool positif;
+
+   do{
+      axe = nbAleatoire(0,1);
+      positif = nbAleatoire(0,1);
+
+      deplacement[int(direction)] += positif ? nbUnites : -nbUnites;
+   }while(true);
+
+}
 
 
 Robots::~Robots(){}
