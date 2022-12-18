@@ -8,19 +8,6 @@
 #include <array>
 #include <vector>
 
-/*
- Tout ce qui est en position x corresponds à la largeur
- y = hauteur
-
-
-
-
-*/
-
-// Using pour réduire lisibilité du code
-// using Data = int;
-// using posRob = std::array<Data,2>;
-
 // Enum de direction du robots (Ordre du PDF)
 enum class Direction{UP = 1, DOWN = 2, RIGHT = 3, LEFT = 4};
 
@@ -46,15 +33,22 @@ public :
   // Destructeurs
   ~Robots();
 
-   //bool positionDUnRobots(unsigned posLargeur, unsigned posHauteur, const std::vector<Robots>& robots);
 private :
 
    // Enum pour direction
    Direction direction;
+
+   bool estObstacle(const Terrain& terrain, const Robots& Robots){
+      return
+   }
 
    // Variables utile pour robots
    unsigned id = 0;                             // Identificateur du robot
    unsigned posLargeur = 0, posHauteur = 0;     // Valeur de l'axe
 
 };
+
+// ---------------------------------------------------------------------------------
+// Divers essaie
+//bool positionDUnRobots(unsigned posLargeur, unsigned posHauteur, const std::vector<Robots>& robots);
 #endif //LABO_ROBOTS_ROBOTS_H

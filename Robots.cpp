@@ -9,10 +9,8 @@
 // C++ version    : C++20
 // ---------------------------------------------------------------------------------
 
-
 #include "Robots.h"
 #include "annexe.h"
-#include <random>
 
 using namespace std;
 
@@ -36,15 +34,6 @@ void Robots::setPosHauteur(unsigned posHauteur) {
     this -> posHauteur = posHauteur;
 }
 
-/*bool Robots::positionDUnRobots(unsigned _posLargeur, unsigned _posHauteur, const vector<Robots>& robots){
-    for(const Robots& r : robots)
-    {
-        if(r.getPosLargeur() == _posLargeur && r.getPosHauteur() == _posHauteur)
-            return true;
-    }
-    return false;
-}*/
-
 bool deplacer(Direction direction, unsigned short nbUnites);
 
 
@@ -52,6 +41,9 @@ bool Robots::operator==(const Robots& robots) const{
    return (this->posHauteur == robots.posHauteur &&
            this -> posLargeur == robots.posLargeur);
 }
+
+
+
 
 Robots::~Robots(){}
 
@@ -62,3 +54,16 @@ void deplacer(unsigned short nbUnites);
 
 // Si on met un array
 unsigned Robots::getID() const {return this->id;}
+
+
+// ---------------------------------------------------------------------------------
+// Divers essaie
+
+/*bool Robots::positionDUnRobots(unsigned _posLargeur, unsigned _posHauteur, const vector<Robots>& robots){
+    for(const Robots& r : robots)
+    {
+        if(r.getPosLargeur() == _posLargeur && r.getPosHauteur() == _posHauteur)
+            return true;
+    }
+    return false;
+}*/
