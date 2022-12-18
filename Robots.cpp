@@ -2,18 +2,16 @@
 // Fichier        : Robots.cpp
 // Auteur(s)      : Bee Gianni & Trüeb Guillaume
 // Date           : 18 décembre 2022
-// But            : Ce programme représente les robots qui font combattent
+// But            : Ce programme représente les robots qui vont combattent
 // Modifications  : NIL
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
 // C++ version    : C++20
 // ---------------------------------------------------------------------------------
 
-
 #include "Robots.h"
 #include "annexe.h"
-#include <array>
-#include <random>
+
 
 using namespace std;
 

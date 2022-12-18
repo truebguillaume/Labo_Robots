@@ -12,14 +12,13 @@
 // C++ version    : C++20
 // ---------------------------------------------------------------------------------
 
-#include <iostream>     // cout, cin§
-#include <cstdlib>      // EXIT_SUCCESS§
-#include <limits>       // Numeric limits§
-#include <string>       // Utilisation stri§ng
+#include <iostream>     // cout, cin
+#include <cstdlib>      // EXIT_SUCCESS
+#include <limits>       // Numeric limits
+#include <string>       // Utilisation string
 #include <thread>       // sleep for
 #include "annexe.h"     // Librairie personnelle (gestion saisie,...)
 #include "terrain.h"    // Classe terrain
-#include "robots.h"     // Classe robots
 
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
@@ -55,14 +54,14 @@ unsigned nbRobots;
 cout << MSG_BIENVENU << endl;
 
 // Saisie des dimensions du terrain
-largeurTerrain = (unsigned)saisieEntier(MSG_SAISIE_LARGEUR,  LARGEUR_MIN,
-                                        LARGEUR_MAX, MSG_ERREUR);
-hauteurTerrain = (unsigned)saisieEntier(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN,
-                                        HAUTEUR_MAX,MSG_ERREUR);
+largeurTerrain = saisieEntier(MSG_SAISIE_LARGEUR,  LARGEUR_MIN,
+                              LARGEUR_MAX, MSG_ERREUR);
+hauteurTerrain = saisieEntier(MSG_SAISIE_HAUTEUR,  HAUTEUR_MIN,
+                              HAUTEUR_MAX,MSG_ERREUR);
 
 // Saisie du nombre de robots
-nbRobots       = (unsigned)saisieEntier(MSG_SAISIE_ROBOTS,  NB_ROBOTS_MIN,
-                                        NB_ROBOTS_MAX, MSG_ERREUR);
+nbRobots       = saisieEntier(MSG_SAISIE_ROBOTS,   NB_ROBOTS_MIN,
+                              NB_ROBOTS_MAX, MSG_ERREUR);
 
 vector<Robots> vecRobots;
 vecRobots.reserve(nbRobots);
@@ -79,7 +78,7 @@ for(unsigned i = 0 ; i < nbRobots ; ++i){
     vecRobots.insert(vecRobots.end(),Robots(i,posLargeur,posHauteur));
 }
 
-while(nbRobots > 1){
+while(vecRobots.size() > 1){
     Terrain monTerrain = Terrain(largeurTerrain, hauteurTerrain);
     monTerrain.afficher(vecRobots);
 
@@ -90,7 +89,7 @@ while(nbRobots > 1){
     #ifdef _WIN32
     system("cls");      // WINDOWS
     #else
-    system("clear");    // MAC
+    system("clear");             // MAC
     #endif
 }
 

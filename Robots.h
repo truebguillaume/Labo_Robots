@@ -2,7 +2,7 @@
 // Fichier        : Robots.h
 // Auteur(s)      : Bee Gianni & Trüeb Guillaume
 // Date           : 18 décembre 2022
-// But            : Ce programme représente les robots qui font combattent
+// But            :
 // Modifications  : NIL
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
@@ -16,12 +16,12 @@
 #include <vector>
 
 // Enum de direction du robots (Ordre du PDF)
-enum class Direction{UP = 1, DOWN = 2, RIGHT = 3, LEFT = 4};
+enum class Direction{HAUT, BAS, DROITE, GAUCHE};
 
 class Robots {
 public :
    // Constructeur:
-   Robots(unsigned id, unsigned posLargeur, unsigned posHauteur);     // ID, posX, posY
+   Robots(unsigned id, unsigned posLargeur, unsigned posHauteur); // ID, posX, posY
 
    // Méthodes
    // Get identificateur & position
@@ -31,10 +31,11 @@ public :
 
    // Set déplacement & position
    bool deplacer(Direction direction, unsigned short nbUnites);
-   static bool positionDUnRobot(const std::vector<Robots>& vecRobots, unsigned posLargeur, unsigned posHauteur);
    void setPosLargeur(unsigned posLargeur);
    void setPosHauteur(unsigned posHauteur);
 
+   static bool positionDUnRobot(const std::vector<Robots>& vecRobots,
+                                unsigned posLargeur, unsigned posHauteur);
     // Opérateur de flux
     bool operator==(const Robots& robots) const;
 
@@ -51,8 +52,4 @@ private :
    unsigned posLargeur = 0, posHauteur = 0;     // Valeur de l'axe
 
 };
-
-// ---------------------------------------------------------------------------------
-// Divers essaie
-//bool positionDUnRobots(unsigned posLargeur, unsigned posHauteur, const std::vector<Robots>& robots);
 #endif //LABO_ROBOTS_ROBOTS_H
