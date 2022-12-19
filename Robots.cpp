@@ -12,27 +12,34 @@
 #include "Robots.h"
 #include "annexe.h"
 
-
 using namespace std;
 
-Robots::Robots(unsigned id, unsigned posLargeur, unsigned posHauteur)
-    : id(id), posLargeur(posLargeur), posHauteur(posHauteur) {}
+Robots::Robots(unsigned _id, unsigned posLargeur, unsigned posHauteur) : posLargeur(posLargeur), posHauteur(posHauteur)
+{
+    this->id = _id;
+}
 
 // Get identificateur & position
-unsigned Robots::getPosLargeur() const {
-    return this->posLargeur;
+void Robots::setPosLargeur(unsigned _posLargeur) {
+    this -> posLargeur = _posLargeur;
 }
 
-unsigned Robots::getPosHauteur() const {
-    return this->posHauteur;
+void Robots::setPosHauteur(unsigned _posHauteur) {
+    this -> posHauteur = _posHauteur;
 }
 
-void Robots::setPosLargeur(unsigned posLargeur) {
-    this-> posLargeur = posLargeur;
-}
+unsigned Robots::positionDUnRobot(const std::vector<Robots> &vecRobots) {
+    /*for(const Robots& r : vecRobots){
+        if(r.posLargeur == this->posLargeur && r.posHauteur == this->posHauteur && r.id != this -> id)
+            return r.id;
+    }*/
 
-void Robots::setPosHauteur(unsigned posHauteur) {
-    this -> posHauteur = posHauteur;
+    for(unsigned i = 0; i < vecRobots.size() ; ++i)
+    {
+        if(vecRobots[i].posLargeur == this->posLargeur && vecRobots[i].posHauteur == this->posHauteur && vecRobots[i].id != this->id)
+            return i;
+    }
+    return -1;
 }
 
 bool Robots::positionDUnRobot(const vector<Robots>& vecRobots, unsigned posLargeur, unsigned posHauteur){
@@ -88,22 +95,9 @@ void Robots::deplacer(unsigned largeurTerrain, unsigned hauteurTerrain) {
 Robots::~Robots(){}
 
 
-
-// Set déplacement & position
-void deplacer(unsigned short nbUnites);
-
 // Si on met un array
 unsigned Robots::getID() const {return this->id;}
 
 
 // ---------------------------------------------------------------------------------
 // Divers essaie
-
-/*bool Robots::positionDUnRobots(unsigned _posLargeur, unsigned _posHauteur, const vector<Robots>& robots){
-    for(const Robots& r : robots)
-    {
-        if(r.getPosLargeur() == _posLargeur && r.getPosHauteur() == _posHauteur)
-            return true;
-    }
-    return false;
-}*/

@@ -96,3 +96,10 @@ bool repondOui() {
 
    return recommencer;
 }
+
+ostream& operator<< (ostream& os, const vector<string>& vs) {
+    for (const string& s : vs) {
+        os << s << endl;
+    }
+    return os;
+}

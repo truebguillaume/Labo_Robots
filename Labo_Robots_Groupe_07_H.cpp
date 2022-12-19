@@ -17,6 +17,8 @@
 #include <limits>       // Numeric limits
 #include <string>       // Utilisation string
 #include <thread>       // sleep for
+#include <algorithm>    // Utilisation de shuffle
+#include <random>       // Shuffle vector
 #include "annexe.h"     // Librairie personnelle (gestion saisie,...)
 #include "terrain.h"    // Classe terrain
 
@@ -49,6 +51,8 @@ unsigned largeurTerrain, hauteurTerrain;
 // Variable saisi par l'utilisateur pour le nombre de robot(s)
 unsigned nbRobots;
 
+static vector<string> tableauDesScores;
+
 // ---------------------------------------------------------------------------------
 // Message de bienvenu
 cout << MSG_BIENVENU << endl;
@@ -70,17 +74,44 @@ unsigned posLargeur, posHauteur;
 
 for(unsigned i = 0 ; i < nbRobots ; ++i){
     do{
-        posLargeur = nbAleatoire(0,largeurTerrain);
-        posHauteur = nbAleatoire(0,hauteurTerrain);
+        posLargeur = nbAleatoire(1,largeurTerrain);
+        posHauteur = nbAleatoire(1,hauteurTerrain);
     }while(Robots::positionDUnRobot(vecRobots,largeurTerrain,hauteurTerrain));
-
 
     vecRobots.insert(vecRobots.end(),Robots(i,posLargeur,posHauteur));
 }
 
+Terrain monTerrain = Terrain(largeurTerrain, hauteurTerrain);
+
+// Boucle de jeu -------------------------------------------------------------------------------------------------------
+
 while(vecRobots.size() > 1){
-    Terrain monTerrain = Terrain(largeurTerrain, hauteurTerrain);
+
     monTerrain.afficher(vecRobots);
+
+    random_shuffle(vecRobots.begin(), vecRobots.end());
+
+    for(size_t i = 0 ; i < nbRobots ; ++i)
+    {
+        vecRobots.at(i).deplacer(largeurTerrain, hauteurTerrain);
+
+        unsigned robotATuer = vecRobots.at(i).positionDUnRobot(vecRobots);
+
+        if(robotATuer != numeric_limits<unsigned>::max())
+        {
+            string str = "Robot " + to_string(vecRobots.at(i).getID()) + " a tué le " + to_string(vecRobots.at(robotATuer).getID());
+
+            vecRobots.at(robotATuer).~Robots();
+            vecRobots.erase(vecRobots.begin()+robotATuer);
+            vecRobots.shrink_to_fit();
+            nbRobots--;
+
+            tableauDesScores.insert(tableauDesScores.end(),str);
+
+        }
+    }
+
+    cout << tableauDesScores;
 
     // Pause d'excution (PDF)
     this_thread::sleep_for(500ms);
@@ -89,10 +120,14 @@ while(vecRobots.size() > 1){
     #ifdef _WIN32
     system("cls");      // WINDOWS
     #else
-    system("clear");             // MAC
+    system("clear");    // MAC
     #endif
 }
 
+monTerrain.afficher(vecRobots);
+cout << tableauDesScores << endl << endl;
+
+cout << "Le robot " << vecRobots.at(0).getID() << " a gagné!" << endl;
 
 cout << "Pressez ENTER pour quitter";
 VIDER_BUFFER;                       // on va surment de faire enculer si on garde

@@ -11,11 +11,6 @@
 
 #include "Robots.h"
 
-// B = barrière / T = terrain
-enum  Topologie {B,T};
-using LigneTerrain = std::vector<Topologie>;
-using DetailsTerrain = std::vector<LigneTerrain>;
-
 class Terrain {
 public:
 
@@ -23,9 +18,8 @@ public:
     Terrain(unsigned _largeur = 10, unsigned _hauteur = 10) : largeur(_largeur), hauteur(_hauteur){};
 
     // METHODES --------------------------------------------------------------------------------------------------------
-    //void afficherTerrain(Robots robots);
-    //bool deplacementPossible(Robots robots);
-    void afficher(std::vector<Robots>& vecRobots);
+    void afficher(const std::vector<Robots>& vecRobots);
+    bool deplacementPossible(unsigned posLargeur, unsigned posHauteur);
 
 private:
     // DATA ------------------------------------------------------------------------------------------------------------

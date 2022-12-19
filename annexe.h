@@ -46,4 +46,7 @@ bool repondOui();
 /// \exception         : - (Aucune exception)
 unsigned nbAleatoire (unsigned min, unsigned max);
 
+
+std::ostream& operator<<(std::ostream& os,const std::vector<std::string>& vs);
+
 #endif //MODELCPP_ANNEXE_H

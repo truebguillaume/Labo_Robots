@@ -6,15 +6,15 @@
 
 using namespace std;
 
-void Terrain::afficher(vector<Robots>& vecRobots) {
+void Terrain::afficher(const vector<Robots>& vecRobots) {
 
     for(unsigned k = 0 ; k <= this->largeur+1 ; ++k)
         cout << "-";
 
     cout << endl;
-    for(unsigned i = 0 ; i <= this->hauteur ; ++i){
+    for(unsigned i = 1 ; i <= this->hauteur ; ++i){
         cout << "|";
-        for(unsigned j = 0 ; j <= this->largeur ; ++j){
+        for(unsigned j = 1 ; j <= this->largeur ; ++j){
             //auto it = find_if(vecRobots.begin(),vecRobots.end(),Robots::positionDUnRobots());
             string sortie = " ";
             bool aRobots = false;
@@ -33,7 +33,6 @@ void Terrain::afficher(vector<Robots>& vecRobots) {
         }
         cout << "|" << endl;
     }
-
     for(unsigned i = 0 ; i <= this->largeur + 1; ++i)
         cout << "-";
 
