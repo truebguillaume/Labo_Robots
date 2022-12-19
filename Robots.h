@@ -16,7 +16,7 @@
 #include <vector>
 
 // Enum de direction du robots (Ordre du PDF)
-enum class Direction{HAUT, BAS, DROITE, GAUCHE};
+enum class Direction{HAUT = 1, BAS, DROITE, GAUCHE};
 
 class Robots {
 public :
@@ -30,7 +30,7 @@ public :
     unsigned getPosHauteur()  const;               // Obtenir position Y
 
    // Set déplacement & position
-   bool deplacer(Direction direction, unsigned short nbUnites);
+   void deplacer(unsigned largeurTerrain, unsigned hauteurTerrain);
    void setPosLargeur(unsigned posLargeur);
    void setPosHauteur(unsigned posHauteur);
 

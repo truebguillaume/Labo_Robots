@@ -49,14 +49,42 @@ bool Robots::operator==(const Robots& robots) const{
 }
 
 
-/*
-void deplacer(Robots& robots, unsigned short nbUnites){
-    for(Robots& robots : robots){
-        robots.deplacer((Direction) nbUnites);
-    }
-}
-*/
+void Robots::deplacer(unsigned largeurTerrain, unsigned hauteurTerrain) {
 
+    unsigned positionHauteur, positionLargeur;
+
+    do {
+        Direction direction = (Direction) nbAleatoire(1, 4);
+
+        positionLargeur = this->posLargeur;
+        positionHauteur = this->posHauteur;
+
+        switch (direction) {
+            case Direction::HAUT :
+                positionHauteur -= 1;
+                break;
+
+            case Direction::BAS:
+                positionHauteur += 1;
+                break;
+
+            case Direction::DROITE:
+                positionLargeur += 1;
+                break;
+
+            case Direction::GAUCHE:
+                positionLargeur -= 1;
+                break;
+
+        }
+    }
+    while (!((positionLargeur <= largeurTerrain && positionLargeur > 0) &&
+            (positionHauteur <= hauteurTerrain && positionHauteur > 0)));
+
+    setPosLargeur(positionLargeur);
+    setPosHauteur(positionHauteur);
+
+}
 Robots::~Robots(){}
 
 
