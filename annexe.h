@@ -11,6 +11,7 @@
 // ---------------------------------------------------------------------------------
 
 #include <string>
+#include <vector>
 
 #ifndef MODELCPP_ANNEXE_H
 #define MODELCPP_ANNEXE_H
@@ -46,7 +47,10 @@ bool repondOui();
 /// \exception         : - (Aucune exception)
 unsigned nbAleatoire (unsigned min, unsigned max);
 
-
+// ---------------------------------------------------------------------------------
+// Opérateur de flux permettant l'affichage d'un string
+/// \param os          : Valeur de sortie
+/// \param vs          : Valeur d'entrée
 std::ostream& operator<<(std::ostream& os,const std::vector<std::string>& vs);
 
 #endif //MODELCPP_ANNEXE_H

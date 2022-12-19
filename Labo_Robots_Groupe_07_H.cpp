@@ -17,17 +17,11 @@
 #include <limits>       // Numeric limits
 #include <string>       // Utilisation string
 #include <thread>       // sleep for
-#include <algorithm>    // Utilisation de shuffle
-#include <random>       // Shuffle vector
+
 #include "annexe.h"     // Librairie personnelle (gestion saisie,...)
 #include "terrain.h"    // Classe terrain
 
-
-#define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
-
 using namespace std;
-
-
 
 int main() {
 
@@ -37,11 +31,12 @@ const int LARGEUR_MIN   = 10,  LARGEUR_MAX   = 1000;  // Largeur minimal / maxim
 const int HAUTEUR_MIN   = 10,  HAUTEUR_MAX   = 1000;  // Hauteur minimal / maximal
 
 // Constante pour le nombre de robots présent lors du combat
-const int NB_ROBOTS_MIN = 1 , NB_ROBOTS_MAX = 10;     // Nombre minimal / maximal
+const int NB_ROBOTS_MIN = 1 , NB_ROBOTS_MAX  = 10;     // Nombre minimal / maximal
 
 // Message d'erreur et de saisi d'utilisateur
 const string MSG_ERREUR            = "/!\\ Saisie non conforme ...";
 const string MSG_BIENVENU          = "Ce programme realise le battle royal de robots dans une arene";
+const string MSG_SORTIE            = "Pressez ENTER pour quitter";
 const string MSG_SAISIE_LARGEUR    = "largeur";
 const string MSG_SAISIE_HAUTEUR    = "hauteur";
 const string MSG_SAISIE_ROBOTS     = "nbre object";
@@ -50,7 +45,9 @@ const string MSG_SAISIE_ROBOTS     = "nbre object";
 unsigned largeurTerrain, hauteurTerrain;
 // Variable saisi par l'utilisateur pour le nombre de robot(s)
 unsigned nbRobots;
-
+// Variable pour la génération des robots
+unsigned posLargeur, posHauteur;
+// Vecteur pour l'historique des vainqueurs des combats
 static vector<string> tableauDesScores;
 
 // ---------------------------------------------------------------------------------
@@ -58,63 +55,70 @@ static vector<string> tableauDesScores;
 cout << MSG_BIENVENU << endl;
 
 // Saisie des dimensions du terrain
-largeurTerrain = saisieEntier(MSG_SAISIE_LARGEUR,  LARGEUR_MIN,
+largeurTerrain = saisieEntier(MSG_SAISIE_LARGEUR,LARGEUR_MIN,
                               LARGEUR_MAX, MSG_ERREUR);
-hauteurTerrain = saisieEntier(MSG_SAISIE_HAUTEUR,  HAUTEUR_MIN,
+hauteurTerrain = saisieEntier(MSG_SAISIE_HAUTEUR,HAUTEUR_MIN,
                               HAUTEUR_MAX,MSG_ERREUR);
 
 // Saisie du nombre de robots
-nbRobots       = saisieEntier(MSG_SAISIE_ROBOTS,   NB_ROBOTS_MIN,
-                              NB_ROBOTS_MAX, MSG_ERREUR);
+nbRobots       = saisieEntier(MSG_SAISIE_ROBOTS,NB_ROBOTS_MIN,
+                              NB_ROBOTS_MAX,MSG_ERREUR);
 
+// ---------------------------------------------------------------------------------
+// Initilisation du vecteur de robots
 vector<Robots> vecRobots;
 vecRobots.reserve(nbRobots);
 
-unsigned posLargeur, posHauteur;
-
+// Boucle de génération du nombre de robots
 for(unsigned i = 0 ; i < nbRobots ; ++i){
     do{
+       // Génération du robots dans des coordonnées aléatoires
         posLargeur = nbAleatoire(1,largeurTerrain);
         posHauteur = nbAleatoire(1,hauteurTerrain);
-    }while(Robots::positionDUnRobot(vecRobots,largeurTerrain,hauteurTerrain));
+     // Contrôle qu'il n'y aille pas de recouvrement lors de la génération
+    }while(Robots::positionDUnRobot(vecRobots,
+                                    largeurTerrain,
+                                    hauteurTerrain));
 
     vecRobots.insert(vecRobots.end(),Robots(i,posLargeur,posHauteur));
 }
 
 Terrain monTerrain = Terrain(largeurTerrain, hauteurTerrain);
 
-// Boucle de jeu -------------------------------------------------------------------------------------------------------
-
+// ---------------------------------------------------------------------------------
+// Boucle de jeu
+// Le programme se termine lorsqu'il n'y a plus que 1 robot en vie
 while(vecRobots.size() > 1){
 
+    // Affichage du vecteur de robots dans le terrain
     monTerrain.afficher(vecRobots);
 
+    // Mélange aléatoire du vecteur de robot pour obtenir une égalité des chances
     random_shuffle(vecRobots.begin(), vecRobots.end());
 
-    for(size_t i = 0 ; i < nbRobots ; ++i)
-    {
+    for(size_t i = 0 ; i < nbRobots ; ++i){
         vecRobots.at(i).deplacer(largeurTerrain, hauteurTerrain);
-
         unsigned robotATuer = vecRobots.at(i).positionDUnRobot(vecRobots);
 
         if(robotATuer != numeric_limits<unsigned>::max())
         {
-            string str = "Robot " + to_string(vecRobots.at(i).getID()) + " a tué le " + to_string(vecRobots.at(robotATuer).getID());
+           string str = "Robot " + to_string(vecRobots.at(i).getID())
+                  + " a tue le " + to_string(vecRobots.at(robotATuer).getID());
 
-            vecRobots.at(robotATuer).~Robots();
-            vecRobots.erase(vecRobots.begin()+robotATuer);
-            vecRobots.shrink_to_fit();
-            nbRobots--;
-
-            tableauDesScores.insert(tableauDesScores.end(),str);
-
+           // Gestion pour lors d'un gagant
+           vecRobots.at(robotATuer).~Robots();                 // Déconstructeur
+           vecRobots.erase(vecRobots.begin() + robotATuer);
+           vecRobots.shrink_to_fit();
+           nbRobots--;
+           // Ajout du vainqueur dans l'historique
+           tableauDesScores.insert(tableauDesScores.end(),str);
         }
     }
-
+    // Affichage du tableau d'historique des gagnants
     cout << tableauDesScores;
 
     // Pause d'excution (PDF)
-    this_thread::sleep_for(500ms);
+    this_thread::sleep_for(25ms);
 
     // Gestion du clear d'affichage
     #ifdef _WIN32
@@ -124,14 +128,15 @@ while(vecRobots.size() > 1){
     #endif
 }
 
+// Affichage du terrain et du vecteur de robots
 monTerrain.afficher(vecRobots);
+// Affichage du tableau d'historique des vainqueurs
 cout << tableauDesScores << endl << endl;
+// Ajout du nouveau vainqueur
+cout << "Le robot " << vecRobots.at(0).getID() << " a gagne!" << endl;
 
-cout << "Le robot " << vecRobots.at(0).getID() << " a gagné!" << endl;
-
-cout << "Pressez ENTER pour quitter";
-VIDER_BUFFER;                       // on va surment de faire enculer si on garde
-                                    // un define PTDR
-
+// Gestion de la sortie utilisateur
+cout << MSG_SORTIE;
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
 return EXIT_SUCCESS;
 }

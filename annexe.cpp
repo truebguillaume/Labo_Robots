@@ -3,7 +3,7 @@
 // Auteur(s)      : Bee Gianni & Trüeb Guillaume
 // Date           : 18 novembre 2022
 // But            : Fournir les définitions des fonctions annexes. On y retrouve
-//                  la fonction de saisi, repondOui et le générateur.
+//                  la fonction de saisi, repondOui, le générateur et l'op. de flux
 // Modifications  : NIL
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
@@ -73,7 +73,7 @@ bool repondOui() {
       // Affichage message de demande de saisie
       cout << endl << "Voulez-vous recommencer le programme ? (o/n) : ";
 
-      // Vérifie si le flux est cassé ou si la valeur est en dehors des valeurs minimum et maximum
+      // Vérifie si le flux est cassé et dans les valeurs minimum et maximum
       erreur = not(cin >> saisie) or (saisie != 'o' and saisie != 'n');
 
       // Si la saisie est incorrecte affiche message erreur et répare le flux
@@ -97,6 +97,9 @@ bool repondOui() {
    return recommencer;
 }
 
+// ---------------------------------------------------------------------------------
+// Cette opérateur de flux permet d'afficher toute les valeurs présente dans un
+// string
 ostream& operator<< (ostream& os, const vector<string>& vs) {
     for (const string& s : vs) {
         os << s << endl;
