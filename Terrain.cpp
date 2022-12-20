@@ -38,24 +38,20 @@ void Terrain::afficher(const vector<Robots>& vecRobots) const {
         cout << LIMITELARGEUR;
 
         // Pour chaque position du terrain
-        for(unsigned j = 1 ; j <= this->largeur ; ++j)
-        {
+        for(unsigned j = 1 ; j <= this->largeur ; ++j){
             // On regarde s'il existe un robot à afficher
             robotAAfficher = Robots::positionDUnRobot(vecRobots, j, i);
 
             // S'il existe un robot à afficher
-            if (robotAAfficher != numeric_limits<unsigned>::max())
-            {
+            if (robotAAfficher != numeric_limits<unsigned>::max()){
                 // On affiche l'ID du robot
                 cout << vecRobots.at(robotAAfficher).getID();
             }
-            else
-            {
+            else{
                 // On affiche un espace
                 cout << VIDE;
             }
         }
-
         cout << LIMITELARGEUR << endl;
     }
 

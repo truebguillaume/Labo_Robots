@@ -24,7 +24,7 @@ using namespace std;
 unsigned saisieEntierPositif(const string& MSG, unsigned min, unsigned max, const string&
                       MSG_ERREUR, int pos) {
 
-    unsigned  saisie;                 // Variable de stockage de la saisie
+    unsigned  saisie;            // Variable de stockage de la saisie
     bool erreur;                 // Variable de stockage de l'état de la saisie
 
     do {

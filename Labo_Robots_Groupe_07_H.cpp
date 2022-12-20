@@ -14,13 +14,13 @@
 
 #include <iostream>     // cout, cin
 #include <cstdlib>      // EXIT_SUCCESS
-#include <limits>       // Numeric limits
-#include <random>
+#include <limits>       // numeric limits
+#include <random>       // random
 #include <string>       // Utilisation string
 #include <thread>       // sleep for
 
-#include "annexe.h"     // Librairie personnelle (gestion saisie,...)
-#include "terrain.h"    // Classe terrain
+#include "annexe.h"     // librairie personnelle (gestion saisie,...)
+#include "terrain.h"    // classe terrain
 
 using namespace std;
 
@@ -58,15 +58,10 @@ static vector<string> tableauDesScores;
 // ---------------------------------------------------------------------------------------------------------------------
 cout << MSG_BIENVENUE << endl;
 
-// Saisie des dimensions du terrain
-largeurTerrain = saisieEntierPositif(MSG_SAISIE_LARGEUR, LARGEUR_MIN,
-                                     LARGEUR_MAX, MSG_ERREUR);
-hauteurTerrain = saisieEntierPositif(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN,
-                                     HAUTEUR_MAX, MSG_ERREUR);
-
-// Saisie du nombre de robots
-nbRobots       = saisieEntierPositif(MSG_SAISIE_ROBOTS, NB_ROBOTS_MIN,
-                                     NB_ROBOTS_MAX, MSG_ERREUR);
+// Saisie des dimensions (largeur et hauteur) du terrain et du nombre de robots
+largeurTerrain = saisieEntierPositif(MSG_SAISIE_LARGEUR, LARGEUR_MIN,LARGEUR_MAX, MSG_ERREUR);
+hauteurTerrain = saisieEntierPositif(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN,HAUTEUR_MAX, MSG_ERREUR);
+nbRobots       = saisieEntierPositif(MSG_SAISIE_ROBOTS, NB_ROBOTS_MIN,NB_ROBOTS_MAX, MSG_ERREUR);
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Initilisation et remplissage du vecteur de robots
@@ -85,7 +80,7 @@ for(unsigned i = 0 ; i < nbRobots ; ++i){
         posLargeur = nbAleatoire(1,largeurTerrain);
         posHauteur = nbAleatoire(1,hauteurTerrain);
 
-     // Contrôle qu'il n'y aie pas de recouvrement lors de la génération
+     // Contrôle qu'il n'y ait pas de recouvrement lors sa génération
     }while(Robots::positionDUnRobot(vecRobots, posLargeur, posHauteur) != numeric_limits<unsigned>::max());
 
     // Insertion des robots dans notre vector de robots
@@ -108,7 +103,7 @@ while(vecRobots.size() > 1){
     // lors des déplacements
     shuffle(vecRobots.begin(), vecRobots.end(), std::mt19937(std::random_device()()));
 
-    // Pour chaques robots encore en vie on les déplaces
+    // Pour chaque robot encore en vie, on les déplace
     for(size_t i = 0 ; i < nbRobots ; ++i){
 
         // Déplacement des robots en fonction de la taille du terrain
@@ -116,7 +111,7 @@ while(vecRobots.size() > 1){
 
         // Récupération de la position dans les vector du robot à éliminer.
         // Si la valeur récupérée est -1 donc la plus grande valeur de unsigned
-        // c'est que aucun robot n'a été éliminé
+        // c'est qu'aucun robot n'a été éliminé
         unsigned robotATuer = vecRobots.at(i).positionDUnRobot(vecRobots);
 
         // Si un robot a été éliminé
@@ -136,8 +131,7 @@ while(vecRobots.size() > 1){
            vecRobots.erase(vecRobots.begin() + robotATuer);
 
            // Réduction du nombre de robots en jeu
-           nbRobots--;
-
+           --nbRobots;
         }
     }
 
@@ -147,11 +141,11 @@ while(vecRobots.size() > 1){
     // Pause d'excution (PDF)
     this_thread::sleep_for(500ms);
 
-    // Gestion du clear d'affichage
+    // Gestion du clear d'affichage (LABO_TONDEUSE)
     #ifdef _WIN32
     system("cls");      // WINDOWS
     #else
-    system("clear");    // MAC
+    system("clear");             // MAC
     #endif
 }
 
@@ -166,6 +160,6 @@ cout << "Le robot " << vecRobots.at(0).getID() << " a gagne!" << endl;
 
 // Gestion de la fin du programme
 cout << MSG_SORTIE;
-cin.ignore(numeric_limits<streamsize>::max(), '\n');
+cin.ignore(numeric_limits<streamsize>::max(), '\n');     // Vider BUFFER
 return EXIT_SUCCESS;
 }

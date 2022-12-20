@@ -25,20 +25,19 @@ public:
 
    // Constructeur de la classe terrain
    // ------------------------------------------------------------------------------------------------------------------
-   /// \param _largeur : Dimension de l'axe des abscisses
-   /// \param _hauteur : Dimension de l'axe des ordonnées
+   /// \param _largeur       : Dimension de l'axe des abscisses
+   /// \param _hauteur       : Dimension de l'axe des ordonnées
    // ------------------------------------------------------------------------------------------------------------------
    Terrain(unsigned _largeur, unsigned _hauteur) : largeur(_largeur), hauteur(_hauteur){};
 
    // Méthode permettant d'afficher le terrain et le vecteur de robots
    // ------------------------------------------------------------------------------------------------------------------
-   /// \param vecRobots : Vecteur à afficher dans le terrain
+   /// \param vecRobots      : Vecteur à afficher dans le terrain
    // ------------------------------------------------------------------------------------------------------------------
    void afficher(const std::vector<Robots>& vecRobots) const;
 
 // ---------------------------------------------------------------------------------------------------------------------
 private:
-
     // Largeur et hauteur du terrain construit
     const unsigned largeur, hauteur;
 };

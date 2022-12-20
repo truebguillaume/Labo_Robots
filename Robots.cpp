@@ -2,9 +2,9 @@
 // Fichier        : Robots.cpp
 // Auteur(s)      : Bee Gianni & Trüeb Guillaume
 // Date           : 12 décembre 2022
-// But            : Ce programme représente la définition du constructeur de
-//                  robot et des différentes méthodes pour la classe robots (get,
-//                  set, déplacement,...)
+// But            : Ce programme représente la définition du constructeur de robot et
+//                  des différentes méthodes pour la classe robots (get, set,
+//                  déplacement,...)
 // Modifications  : NIL
 // Remarque(s)    : -
 // Compilateur    : MinGW w64 9.0.0 / Apple clang version 14.0.0
@@ -33,7 +33,7 @@ void Robots::deplacer(unsigned largeurTerrain, unsigned hauteurTerrain) {
    unsigned positionHauteur, positionLargeur;
 
    do {
-      // Génération d'un déplacement aléatoire
+      // Génération d'un déplacement dans une direction aléatoire
       auto direction = (Direction) nbAleatoire(1, 4);
 
       // Copie des valeurs de positions actuelle
@@ -42,13 +42,13 @@ void Robots::deplacer(unsigned largeurTerrain, unsigned hauteurTerrain) {
 
       // Incrémentation/Décrémentation des valeurs en fonction de l'aléatoire
       switch (direction) {
-         case Direction::HAUT :
+         case Direction::HAUT   :
             positionHauteur -= 1; break;
-         case Direction::BAS:
+         case Direction::BAS    :
             positionHauteur += 1; break;
-         case Direction::DROITE:
+         case Direction::DROITE :
             positionLargeur += 1; break;
-         case Direction::GAUCHE:
+         case Direction::GAUCHE :
             positionLargeur -= 1; break;
       }
    }
