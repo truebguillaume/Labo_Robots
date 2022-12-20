@@ -7,7 +7,7 @@
 //                  les positions et le déplacement possibles.
 // Modifications  : NIL
 // Remarque(s)    : -
-// Compilateur    : Apple clang version 14.0.0
+// Compilateur    : MinGW w64 9.0.0 / Apple clang version 14.0.0
 // C++ version    : C++20
 // ---------------------------------------------------------------------------------
 
@@ -61,12 +61,12 @@ public :
    /// \param hauteurTerrain : valeur de déplacement sur l'axe des ordonnées
    void deplacer(unsigned largeurTerrain, unsigned hauteurTerrain);
 
-   // Méthode permettant de déterminer le numéro d'identification du robot s'il
+   // Méthode permettant de déterminer la position dans le vector du robot s'il
    // est sur la même position qu'un autre robot
    // ------------------------------------------------------------------------------
    /// \param vecRobots   : Vecteur à contrôler
    /// \return            : retourne le numéro d'identification du robots
-   unsigned positionDUnRobot(const std::vector<Robots> &vecRobots);
+   unsigned positionDUnRobot(const std::vector<Robots> &vecRobots) const;
 
    // Méthode permettant de déterminer la position unique d'un robot lors de la
    // génération du terrain
@@ -75,11 +75,11 @@ public :
    /// \param posLargeur  : Position maximal de l'axe des abscisses
    /// \param posHauteur  : Position maximal de l'axe des ordonnées
    /// \return            : retourne une valeur booléenne si déjà existante
-   static bool positionDUnRobot(const std::vector<Robots>& vecRobots,
+   static unsigned positionDUnRobot(const std::vector<Robots>& vecRobots,
                                 unsigned posLargeur, unsigned posHauteur);
 
    // Destructeurs
-   ~Robots(){};
+   ~Robots() = default;
 
 private :
    // Variable nécessaire au fonctionnement de la classe

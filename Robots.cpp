@@ -7,7 +7,7 @@
 //                  set, déplacement,...)
 // Modifications  : NIL
 // Remarque(s)    : -
-// Compilateur    : Apple clang version 14.0.0
+// Compilateur    : MinGW w64 9.0.0 / Apple clang version 14.0.0
 // C++ version    : C++20
 // ---------------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ void Robots::deplacer(unsigned largeurTerrain, unsigned hauteurTerrain) {
 
    do {
       // Génération d'un déplacement aléatoire
-      Direction direction = (Direction) nbAleatoire(1, 4);
+      auto direction = (Direction) nbAleatoire(1, 4);
 
       // Copie des valeurs de positions actuelle
       positionLargeur = this->posLargeur;
@@ -63,7 +63,7 @@ void Robots::deplacer(unsigned largeurTerrain, unsigned hauteurTerrain) {
 
 // Méthode permettant de déterminer le numéro d'identification du robot s'il est
 // sur la même position qu'un autre robot
-unsigned Robots::positionDUnRobot(const std::vector<Robots> &vecRobots) {
+unsigned Robots::positionDUnRobot(const std::vector<Robots> &vecRobots) const {
     for(unsigned i = 0; i < vecRobots.size() ; ++i){
         // Détermine s'il est sur les mêmes coordonnées mais que c'est pas lui-même
         if(vecRobots[i].posLargeur == this->posLargeur &&
@@ -72,17 +72,19 @@ unsigned Robots::positionDUnRobot(const std::vector<Robots> &vecRobots) {
            // Retourne la valeur de la position
            return i;
     }
-    return -1;
+    return (unsigned)-1;
 }
 
-// Méthode permettant de déterminer la position unique d'un robot lors de la
-// génération du terrain
-bool Robots::positionDUnRobot(const vector<Robots>& vecRobots, unsigned posLargeur, unsigned posHauteur){
-    for(const Robots& r : vecRobots){
-        // Contrôle que la position générée n'existe pas déjà
-        if(r.getPosLargeur() == posLargeur && r.getPosHauteur() == posHauteur)
-            // Position déjà existante
-            return true;
+// Méthode permettant de déterminer si la position donnée en paramètre correpond à une des robots
+// dans le vector de robots
+unsigned Robots::positionDUnRobot(const vector<Robots>& vecRobots, unsigned posLargeur, unsigned posHauteur){
+
+    for(unsigned i = 0; i < vecRobots.size() ; ++i){
+        // Détermine s'il est sur les mêmes coordonnées mais que c'est pas lui-même
+        if(vecRobots[i].posLargeur == posLargeur &&
+           vecRobots[i].posHauteur == posHauteur)
+            // Retourne la valeur de la position
+            return i;
     }
-    return false;
+    return (unsigned)-1;
 }

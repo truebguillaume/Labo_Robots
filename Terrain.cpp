@@ -6,53 +6,62 @@
 //                  de la zone de combat et des robots
 // Modifications  : NIL
 // Remarque(s)    : -
-// Compilateur    : Apple clang version 14.0.0
+// Compilateur    : MinGW w64 9.0.0 / Apple clang version 14.0.0
 // C++ version    : C++20
 // ---------------------------------------------------------------------------------
+
+#include <iostream>
 
 #include "Terrain.h"
 
 using namespace std;
 
 // Constante pour l'affichage
-const string LIMITELARGEUR = "-";
-const string LIMITEHAUTEUR = "|";
+const string LIMITEHAUTEUR = "-";
+const string LIMITELARGEUR = "|";
 const string VIDE          = " ";
 
 // Méthode permettant d'afficher le terrain et le vecteur de robots
-void Terrain::afficher(const vector<Robots>& vecRobots) {
+void Terrain::afficher(const vector<Robots>& vecRobots) const {
+
+    unsigned robotAAfficher;
 
    // Affichage des limites supérieur
     for(unsigned k = 0 ; k <= this->largeur+1 ; ++k)
-        cout << LIMITELARGEUR;
+        cout << LIMITEHAUTEUR;
     cout << endl;
 
+    // Affichage du corps du terrain
     for(unsigned i = 1 ; i <= this->hauteur ; ++i){
-        cout << LIMITEHAUTEUR;
 
-        for(unsigned j = 1 ; j <= this->largeur ; ++j){
-            string sortie = VIDE;
-            bool aRobots  = false;
+        // Affichage du bords de la ligne
+        cout << LIMITELARGEUR;
 
-            // Détermination si nécessaire d'afficher un robots
-            for(const Robots& r : vecRobots){
-                if(r.getPosLargeur() == j && r.getPosHauteur() == i){
-                    aRobots = true;
-                    // Détermination du numéro du robots
-                    sortie = to_string(r.getID());
-                }
+        // Pour chaque position du terrain
+        for(unsigned j = 1 ; j <= this->largeur ; ++j)
+        {
+            // On regarde s'il existe un robot à afficher
+            robotAAfficher = Robots::positionDUnRobot(vecRobots, j, i);
+
+            // S'il existe un robot à afficher
+            if (robotAAfficher != numeric_limits<unsigned>::max())
+            {
+                // On affiche l'ID du robot
+                cout << vecRobots.at(robotAAfficher).getID();
             }
-            // Affichage de l'ID du robot
-            if(aRobots)
-                cout << sortie;
             else
+            {
+                // On affiche un espace
                 cout << VIDE;
+            }
         }
-        cout << LIMITEHAUTEUR << endl;
+
+        cout << LIMITELARGEUR << endl;
     }
+
     // Affichage de la limite de la largeur
     for(unsigned i = 0 ; i <= this->largeur + 1; ++i)
-        cout << LIMITELARGEUR;
+        cout << LIMITEHAUTEUR;
 
     cout << endl;
 }
