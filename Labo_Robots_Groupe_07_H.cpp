@@ -20,7 +20,7 @@
 #include <thread>       // sleep for
 
 #include "annexe.h"     // librairie personnelle (gestion saisie,...)
-#include "terrain.h"    // classe terrain
+#include "Terrain.h"    // classe terrain
 
 using namespace std;
 
