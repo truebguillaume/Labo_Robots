@@ -1,4 +1,4 @@
-// ---------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 // Fichier        : Robots.cpp
 // Auteur(s)      : Bee Gianni & Trüeb Guillaume
 // Date           : 12 décembre 2022
@@ -9,7 +9,7 @@
 // Remarque(s)    : -
 // Compilateur    : MinGW w64 9.0.0 / Apple clang version 14.0.0
 // C++ version    : C++20
-// ---------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 
 #include "Robots.h"
 #include "annexe.h"
@@ -52,7 +52,7 @@ void Robots::deplacer(unsigned largeurTerrain, unsigned hauteurTerrain) {
             positionLargeur -= 1; break;
       }
    }
-   // Contrôle que les nouvelles positons sans encore dans la zone
+   // Contrôle que les nouvelles positions sans encore dans la zone
    while (!((positionLargeur <= largeurTerrain && positionLargeur > 0) &&
             (positionHauteur <= hauteurTerrain && positionHauteur > 0)));
 
@@ -75,10 +75,8 @@ unsigned Robots::positionDUnRobot(const std::vector<Robots> &vecRobots) const {
     return (unsigned)-1;
 }
 
-// Méthode permettant de déterminer si la position donnée en paramètre correpond à une des robots
-// dans le vector de robots
+// Méthode permettant de déterminer si la position donnée en paramètre correpond à une des robots dans le vector
 unsigned Robots::positionDUnRobot(const vector<Robots>& vecRobots, unsigned posLargeur, unsigned posHauteur){
-
     for(unsigned i = 0; i < vecRobots.size() ; ++i){
         // Détermine s'il est sur les mêmes coordonnées mais que c'est pas lui-même
         if(vecRobots[i].posLargeur == posLargeur &&

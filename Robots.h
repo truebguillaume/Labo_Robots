@@ -1,4 +1,4 @@
-// ---------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 // Fichier        : Robots.h
 // Auteur(s)      : Bee Gianni & Trüeb Guillaume
 // Date           : 12 décembre 2022
@@ -9,7 +9,7 @@
 // Remarque(s)    : -
 // Compilateur    : MinGW w64 9.0.0 / Apple clang version 14.0.0
 // C++ version    : C++20
-// ---------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 
 #ifndef LABO_ROBOTS_ROBOTS_H
 #define LABO_ROBOTS_ROBOTS_H
@@ -17,21 +17,21 @@
 #include <array>
 #include <vector>
 
-// ---------------------------------------------------------------------------------
-// Enum de direction du robots (Ordre du PDF)
+// ---------------------------------------------------------------------------------------------------------------------
+// Enum de direction du robot (Ordre du PDF)
 enum class Direction{HAUT = 1, BAS, DROITE, GAUCHE};
 
 class Robots {
 public :
    // Constructeur de la classe Robots
-   // ------------------------------------------------------------------------------
+   // ------------------------------------------------------------------------------------------------------------------
    /// \param id          : Numéro d'identification du robot
    /// \param _posLargeur : Position sur l'axe des abscisses du robot
    /// \param _posHauteur : Position sur l'axe des ordonnées du robot
    Robots(unsigned id, unsigned _posLargeur, unsigned _posHauteur);
 
    // Méthode permettant d'obtenir le numéro d'identifaction du robot
-   // ------------------------------------------------------------------------------
+   // ------------------------------------------------------------------------------------------------------------------
    /// \return  : retourne l'id dans un entier non signé
    unsigned getID()          const { return id; };
 
@@ -46,12 +46,12 @@ public :
    unsigned getPosHauteur()  const { return posHauteur; };
 
    // Méthode permettant de définir la valeur de l'axe des abscisses
-   // ------------------------------------------------------------------------------
+   // ------------------------------------------------------------------------------------------------------------------
    /// \param _posLargeur : détermine la valeur de positionnement
    void setPosLargeur(unsigned _posLargeur);
 
    // Méthode permettant de définir la valeur de l'axe des ordonnées
-   // ------------------------------------------------------------------------------
+   // ------------------------------------------------------------------------------------------------------------------
    /// \param _posHauteur : déterminer la valeur de positionnement
    void setPosHauteur(unsigned _posHauteur);
 
