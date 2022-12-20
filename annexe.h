@@ -25,16 +25,9 @@
 /// \param pos         : correspond à l'espace entre le msg et le borne
 // ---------------------------------------------------------------------------------------------------------------------
 /// \return            : une valeur de type int comprenant la saisie de l'utilisateur
-/// \exception         : -
-unsigned  saisieEntier(const std::string& MSG, unsigned min, unsigned max,
-                       const std::string& MSG_ERREUR, int pos = 7);
-
-// Fonction permettant de demander à l'utilisateur une question en attendant
-// une réponse oui ou non
-// ---------------------------------------------------------------------------------
-/// \return            : une valeur de type bool avec true si la réponse était oui
 /// \exception         : - (Aucune exception)
-bool repondOui();
+unsigned  saisieEntierPositif(const std::string& MSG, unsigned min, unsigned max,
+                              const std::string& MSG_ERREUR, int pos = 7);
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Fonction générant un nombre aléatoire dans une plage déterminée par des bornes

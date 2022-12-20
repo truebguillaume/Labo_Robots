@@ -61,8 +61,7 @@ void Robots::deplacer(unsigned largeurTerrain, unsigned hauteurTerrain) {
    setPosHauteur(positionHauteur);
 }
 
-// Méthode permettant de déterminer le numéro d'identification du robot s'il est
-// sur la même position qu'un autre robot
+// Méthode permettant de déterminer la position du robot s'il est sur la même position qu'un autre robot
 unsigned Robots::positionDUnRobot(const std::vector<Robots> &vecRobots) const {
     for(unsigned i = 0; i < vecRobots.size() ; ++i){
         // Détermine s'il est sur les mêmes coordonnées mais que c'est pas lui-même

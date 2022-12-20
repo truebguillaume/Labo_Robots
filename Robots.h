@@ -35,16 +35,6 @@ public :
    /// \return  : retourne l'id dans un entier non signé
    unsigned getID()          const { return id; };
 
-   // Méthode permettant d'obtenir la position du robot sur l'axe des abscisses
-   // ------------------------------------------------------------------------------
-   /// \return  : retourne la valeur de l'axe des abscisses dans un entier non signé
-   unsigned getPosLargeur()  const { return posLargeur; };
-
-   // Méthode permettant d'obtenir la position du robot sur l'axe des ordonnées
-   // ------------------------------------------------------------------------------
-   /// \return  : retourne la valeur de l'axe des ordonnées dans un entier non signé
-   unsigned getPosHauteur()  const { return posHauteur; };
-
    // Méthode permettant de définir la valeur de l'axe des abscisses
    // ------------------------------------------------------------------------------------------------------------------
    /// \param _posLargeur : détermine la valeur de positionnement
@@ -55,37 +45,36 @@ public :
    /// \param _posHauteur : déterminer la valeur de positionnement
    void setPosHauteur(unsigned _posHauteur);
 
-   // Méthode permettant le déplacement aléatoires du robots dans des bornes
-   // ------------------------------------------------------------------------------
+   // Méthode permettant le déplacement aléatoire du robot dans des bornes du terrain
+   // ------------------------------------------------------------------------------------------------------------------
    /// \param largeurTerrain : valeur de déplacement sur l'axe des abscisses
    /// \param hauteurTerrain : valeur de déplacement sur l'axe des ordonnées
    void deplacer(unsigned largeurTerrain, unsigned hauteurTerrain);
 
-   // Méthode permettant de déterminer la position dans le vector du robot s'il
+   // Méthode permettant de déterminer la position dans le vector d'un robot s'il
    // est sur la même position qu'un autre robot
-   // ------------------------------------------------------------------------------
-   /// \param vecRobots   : Vecteur à contrôler
-   /// \return            : retourne le numéro d'identification du robots
+   // ------------------------------------------------------------------------------------------------------------------
+   /// \param vecRobots      : Vecteur à contrôler
+   /// \return               : retourne la position du robot dans le vector
    unsigned positionDUnRobot(const std::vector<Robots> &vecRobots) const;
 
-   // Méthode permettant de déterminer la position unique d'un robot lors de la
-   // génération du terrain
-   // ------------------------------------------------------------------------------
-   /// \param vecRobots   : Vecteur à contrôler
-   /// \param posLargeur  : Position maximal de l'axe des abscisses
-   /// \param posHauteur  : Position maximal de l'axe des ordonnées
-   /// \return            : retourne une valeur booléenne si déjà existante
-   static unsigned positionDUnRobot(const std::vector<Robots>& vecRobots,
-                                unsigned posLargeur, unsigned posHauteur);
+   // Méthode permettant de déterminer si un robot existe aux positions posLargeur
+   // et posHauteur
+   // ------------------------------------------------------------------------------------------------------------------
+   /// \param vecRobots      : Vecteur à contrôler
+   /// \param posLargeur     : Position sur la largeur à contrôler
+   /// \param posHauteur     : Position sur la hauteur à contrôler
+   /// \return               : retourne la position du robot dans le vector
+   static unsigned positionDUnRobot(const std::vector<Robots>& vecRobots, unsigned posLargeur, unsigned posHauteur);
 
-   // Destructeurs
+   // Destructeur
    ~Robots() = default;
 
 private :
    // Variable nécessaire au fonctionnement de la classe
    unsigned posLargeur = 0,     // Valeur de l'axe des abscisses
             posHauteur = 0;     // Valeur de l'axe des ordonnées
-   unsigned id         = 0;     // N° d'identification de l'objet/robot
+   unsigned id;                 // N° d'identification de l'objet/robot
 
 };
 #endif //LABO_ROBOTS_ROBOTS_H

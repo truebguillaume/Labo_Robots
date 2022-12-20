@@ -59,14 +59,14 @@ static vector<string> tableauDesScores;
 cout << MSG_BIENVENUE << endl;
 
 // Saisie des dimensions du terrain
-largeurTerrain = saisieEntier(MSG_SAISIE_LARGEUR,LARGEUR_MIN,
-                              LARGEUR_MAX, MSG_ERREUR);
-hauteurTerrain = saisieEntier(MSG_SAISIE_HAUTEUR,HAUTEUR_MIN,
-                              HAUTEUR_MAX,MSG_ERREUR);
+largeurTerrain = saisieEntierPositif(MSG_SAISIE_LARGEUR, LARGEUR_MIN,
+                                     LARGEUR_MAX, MSG_ERREUR);
+hauteurTerrain = saisieEntierPositif(MSG_SAISIE_HAUTEUR, HAUTEUR_MIN,
+                                     HAUTEUR_MAX, MSG_ERREUR);
 
 // Saisie du nombre de robots
-nbRobots       = saisieEntier(MSG_SAISIE_ROBOTS,NB_ROBOTS_MIN,
-                              NB_ROBOTS_MAX,MSG_ERREUR);
+nbRobots       = saisieEntierPositif(MSG_SAISIE_ROBOTS, NB_ROBOTS_MIN,
+                                     NB_ROBOTS_MAX, MSG_ERREUR);
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Initilisation et remplissage du vecteur de robots
@@ -84,6 +84,7 @@ for(unsigned i = 0 ; i < nbRobots ; ++i){
        // Génération du robots dans des coordonnées aléatoires
         posLargeur = nbAleatoire(1,largeurTerrain);
         posHauteur = nbAleatoire(1,hauteurTerrain);
+
      // Contrôle qu'il n'y aie pas de recouvrement lors de la génération
     }while(Robots::positionDUnRobot(vecRobots, posLargeur, posHauteur) != numeric_limits<unsigned>::max());
 
@@ -104,6 +105,7 @@ while(vecRobots.size() > 1){
     monTerrain.afficher(vecRobots);
 
     // Mélange aléatoire du vecteur de robot pour obtenir une égalité des chances
+    // lors des déplacements
     shuffle(vecRobots.begin(), vecRobots.end(), std::mt19937(std::random_device()()));
 
     // Pour chaques robots encore en vie on les déplaces
@@ -114,7 +116,7 @@ while(vecRobots.size() > 1){
 
         // Récupération de la position dans les vector du robot à éliminer.
         // Si la valeur récupérée est -1 donc la plus grande valeur de unsigned
-        // c'est que aucun robot n'a été éliminé.
+        // c'est que aucun robot n'a été éliminé
         unsigned robotATuer = vecRobots.at(i).positionDUnRobot(vecRobots);
 
         // Si un robot a été éliminé
@@ -132,9 +134,6 @@ while(vecRobots.size() > 1){
 
            // Effacage du robots dans le vector
            vecRobots.erase(vecRobots.begin() + robotATuer);
-
-           // Reduction de la taille du vector
-           vecRobots.shrink_to_fit();
 
            // Réduction du nombre de robots en jeu
            nbRobots--;
@@ -165,7 +164,7 @@ cout << tableauDesScores << endl;
 // Affichage du nom du gagnant
 cout << "Le robot " << vecRobots.at(0).getID() << " a gagne!" << endl;
 
-// Gestion de la sortie utilisateur
+// Gestion de la fin du programme
 cout << MSG_SORTIE;
 cin.ignore(numeric_limits<streamsize>::max(), '\n');
 return EXIT_SUCCESS;
