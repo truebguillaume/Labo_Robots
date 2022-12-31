@@ -1,4 +1,4 @@
-# PRG1 - Labo_Robots
+# PRG1 - Labo Robots
 
 OBJECTIF
 -
